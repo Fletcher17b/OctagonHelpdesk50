@@ -17,7 +17,7 @@ namespace OctagonHelpdesk.Formularios
             //this.currentUser = currentUser;
             InitializeBinding();
 
-            bindingNavigatorDeleteItem.Visible = false;
+          
 
         }
         //Inicializa el BindingSource
