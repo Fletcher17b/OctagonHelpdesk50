@@ -18,62 +18,96 @@ namespace OctagonHelpdesk.Formularios
 
         public event Action<Ticket> TicketCreated;
         private readonly TicketService ticketServiceLocal;
-
         public Ticket ticket = new Ticket();
+        public Ticket ticketSel = new Ticket();
+
+        // Constructor para crear un nuevo ticket
         public CmpTicketFrm(TicketService ticketService)
         {
             InitializeComponent();
             ticketServiceLocal = ticketService;
+            InitializeFormWithoutTicketData();
         }
+
+        // Constructor para editar un ticket existente
+        public CmpTicketFrm(TicketService ticketService, Ticket ticketSelected)
+        {
+            InitializeComponent();
+            ticketServiceLocal = ticketService;
+            ticketSel = ticketSelected;
+            InitializeFormWithTicketData();
+        }
+
+        // Inicializar el formulario para crear un nuevo ticket
+        private void InitializeFormWithoutTicketData()
+        {
+            ticket.IDTicket = ticketServiceLocal.AutogeneradorID();
+            lblTicketID.Text = $"Ticket # {ticket.IDTicket}";
+            ticket.CreationDate = DateTime.Now;
+            ticket.ActiveState = true;
+        }
+
+        // Inicializar el formulario para editar un ticket existente
+        private void InitializeFormWithTicketData()
+        {
+            if (ticketSel != null)
+            {
+                ticket = ticketSel;
+
+                lblTicketID.Text = $"Ticket # {ticketSel.IDTicket}";
+                txtSubject.Text = ticketSel.Subject;
+                txtDescription.Text = ticketSel.Descripcion;
+                cmbState.SelectedItem = ticketSel.StateProcess;
+                cmbPriority.SelectedItem = ticketSel.Prioridad;
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             bool ticketValid = false;
-
             string subject = txtSubject.Text;
             string description = txtDescription.Text;
-            
-            if (string.IsNullOrEmpty(subject) || string.IsNullOrEmpty(description))
-            {
-                MessageBox.Show("Por favor, llene todos los campos", "Ups! Cuidado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                //Se tiene q autogenerar el ID del ticket
-                ticket.IDTicket = ticketServiceLocal.AutogeneradorID();
-                ticket.Subject = subject;
-                ticket.Descripcion = description;
-                ticket.StateProcess = cmbState.SelectedItem != null ? (State)cmbState.SelectedItem : State.Creado;
-                ticket.ActiveState = true;
-                ticket.FechaCreacion = DateTime.Now;
-                ticket.Prioridad = cmbPriority.SelectedItem != null ? (Priority)cmbPriority.SelectedItem : Priority.Baja;
-                ticket.AsignadoA = "Sin Asignar";
-                if (ticket.StateProcess == State.Cerrado)
-                {
-                    ticket.FechaCierre = DateTime.Now;
-                }
-                ticketValid = true;
 
+            ticketValid = ValidarDatos();
 
-            }
             try
             {
                 if (ticketValid)
                 {
+                   
+                    ticket.Subject = subject;
+                    ticket.Descripcion = description;
+                    ticket.StateProcess = cmbState.SelectedItem != null ? (State)cmbState.SelectedItem : State.Creado;
+                    ticket.Prioridad = (Priority)cmbPriority.SelectedItem;
+                    ticket.AsignadoA = "No Asignado";
+
+                    if (ticket.StateProcess == State.Cerrado)
+                    {
+                        ticket.CloseDate = DateTime.Now;
+                    }
+
                     TicketCreated?.Invoke(ticket);
-
                     this.Close();
-
+                }
+                else
+                {
+                    MessageBox.Show("Revise el Formato de los Datos Ingresados", "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar el ticket", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
         }
 
+        public bool ValidarDatos()
+        {
+            if (string.IsNullOrEmpty(txtSubject.Text) || string.IsNullOrEmpty(txtDescription.Text) || cmbState.SelectedIndex == -1 || cmbPriority.SelectedIndex == -1)
+            {
+                return false;
+            }
+            return true;
+        }
 
         private void CmpTicketFrm_Load(object sender, EventArgs e)
         {

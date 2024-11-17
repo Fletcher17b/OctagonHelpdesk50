@@ -10,79 +10,111 @@ namespace OctagonHelpdesk.Formularios
     public partial class RegTicketFrm : Form
     {
         public TicketService tickets = new TicketService();
-        public Ticket ticketSel = new Ticket();
+        
         public RegTicketFrm()
         {
             InitializeComponent();
             //this.currentUser = currentUser;
             InitializeBinding();
 
-        }
-
-        private void BtnCreateTicket_Click(object sender, EventArgs e)
-        {
-            CmpTicketFrm ticketFrm = new CmpTicketFrm(tickets);
-            ticketFrm.TicketCreated += OnTicketCreated;
-            ticketFrm.ShowDialog();
-            MostrarTickets();
+            bindingNavigatorDeleteItem.Visible = false;
 
         }
-        private void OnTicketCreated(Ticket ticket)
-        {
-            tickets.AddTicket(ticket);
-            bindingSource.ResetBindings(false);
-        }
-      
-
-
-        private void MostrarTickets()
-        {
-            bindingSource.DataSource = tickets.GetTickets();
-            bindingSource.ResetBindings(false);
-        }
+        //Inicializa el BindingSource
         private void InitializeBinding()
         {
             bindingSource.DataSource = tickets.GetTickets();
             DgvRegTickets.DataSource = bindingSource;
             bindingNavigator1.BindingSource = bindingSource;
-            // Manejar el evento AddingNew para evitar la creación automática de nuevos elementos
-            // Deshabilitar el comportamiento predeterminado del botón de eliminar
-            // Manejar el evento Deleting para mostrar un MessageBox de confirmación
-
+            bindingNavigatorDeleteItem.Enabled = false;
         }
 
-        private void bindingSource_AddingNew(object sender, AddingNewEventArgs e)
+        //BOTONES DE LA BARRA DE HERRAMIENTAS
+        //Boton de Agregar
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-            // Cancelar la adición automática de un nuevo elemento
-            //e.Cancel = true;
-
-            // Aquí puedes abrir tu formulario de creación de tickets
-            BtnCreateTicket_Click(sender, e);
+            CrearTicket();
         }
 
+        //Boton de Editar
+        private void DgvRegTickets_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (SelectedTicketRow() != null)
+            {
+                EditarTicket(SelectedTicketRow());
+            }
+
+
+        }
+
+        //Boton de Eliminar
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
-          
-
+            var result = MessageBox.Show("¿Está seguro de que desea eliminar este ticket?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                tickets.RemoveTicket(SelectedTicketRow());
+                MessageBox.Show("Ticket eliminado correctamente", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bindingSource.ResetBindings(false);
+            }
+            else
+            {
+                MessageBox.Show("No se ha eliminado el ticket", "Eliminación cancelada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        public void bindingSource_Deleting(object sender, CancelEventArgs e)
+        //EVENTOS
+        private void OnTicketCreated(Ticket ticket)
         {
-            if (bindingSource.Current != null)
+            int indexTicket = tickets.FindPosition(ticket.IDTicket);
+            if (indexTicket != -1)
             {
-                var result = MessageBox.Show("¿Está seguro de que desea eliminar este ticket?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    bindingSource.RemoveCurrent();
-                }
+                tickets.UpdateTicket(ticket);
             }
+            else
+            {
+                tickets.AddTicket(ticket);
+            }
+            bindingSource.ResetBindings(false);
+        }
+
+        //FUNCIONES DE APOYO
+        //Crea un ticket y manda a llamar al formulario de creación de tickets
+        private void CrearTicket()
+        {
+            CmpTicketFrm ticketFrm = new CmpTicketFrm(tickets);
+            ticketFrm.TicketCreated += OnTicketCreated;
+            ticketFrm.ShowDialog();
+           
+        }
+
+        //Manda a llamar al formulario de edición de tickets
+        public void EditarTicket(Ticket ticketSel)
+        {
+            CmpTicketFrm ticketFrm = new CmpTicketFrm(tickets, ticketSel);
+            ticketFrm.TicketCreated += OnTicketCreated;
+            ticketFrm.ShowDialog();
+        }
+
+        //Devuelve el ticket seleccionado en el DataGridView
+        public Ticket SelectedTicketRow()
+        {
+            DataGridViewRow currentRow = DgvRegTickets.CurrentRow;
+            Ticket ticketSel = new Ticket();
+
+            if (currentRow != null)
+            {
+                ticketSel.IDTicket = Convert.ToInt32(currentRow.Cells[0].Value);
+                ticketSel = tickets.GetTicket(ticketSel.IDTicket);
+                return ticketSel;
+
+            }
+            return null;
         }
 
         private void DgvRegTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewRow currentRow = DgvRegTickets.CurrentRow;
-            ticketSel = (Ticket)currentRow.DataBoundItem;
-
+         bindingNavigatorDeleteItem.Enabled = true;
         }
     }
 }

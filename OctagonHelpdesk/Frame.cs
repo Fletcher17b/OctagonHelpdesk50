@@ -119,5 +119,10 @@ namespace OctagonHelpdesk
         {
 
         }
+
+        private void panelcontent_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

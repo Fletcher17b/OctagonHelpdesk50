@@ -47,7 +47,7 @@ namespace OctagonHelpdesk.Formularios
         {
             tbIDUser.Text = usuarioServiceLocal.AutogeneradorID().ToString();
             usuario.ActiveStateU = true;
-            usuario.CreationDate = DateTime.Now;
+            
 
         }
 
@@ -63,7 +63,7 @@ namespace OctagonHelpdesk.Formularios
                 tbEmail.Text = usuarioSel.Email;
                 cmbDepartamento.SelectedItem = usuarioSel.Departamento;
                 // Asignar otros valores según sea necesario
-                usuario.CreationDate = usuarioSel.CreationDate;
+                usuario = usuarioSel;   
             }
         }
 
@@ -87,9 +87,8 @@ namespace OctagonHelpdesk.Formularios
                     usuario.Name = name;
                     usuario.Lastname = lastname;
                     usuario.Email = email;
-                    usuario.LastUpdatedDate = DateTime.Now;
-
                     usuario.Departamento = (Departament)cmbDepartamento.SelectedItem;
+
                     usuarioValid = true;
                     UsuarioCreated?.Invoke(usuario);
 

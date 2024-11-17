@@ -42,7 +42,7 @@
             this.btnAttachments = new System.Windows.Forms.Button();
             this.cmbPriority = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblTicketID = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -206,16 +206,16 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Prioridad:";
             // 
-            // label6
+            // lblTicketID
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(207, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(241, 54);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Crear Ticket:";
+            this.lblTicketID.AutoSize = true;
+            this.lblTicketID.BackColor = System.Drawing.Color.Transparent;
+            this.lblTicketID.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTicketID.Location = new System.Drawing.Point(207, 9);
+            this.lblTicketID.Name = "lblTicketID";
+            this.lblTicketID.Size = new System.Drawing.Size(241, 54);
+            this.lblTicketID.TabIndex = 16;
+            this.lblTicketID.Text = "Crear Ticket:";
             // 
             // pictureBox1
             // 
@@ -233,7 +233,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(906, 664);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblTicketID);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "CmpTicketFrm";
@@ -259,7 +259,7 @@
         private System.Windows.Forms.ComboBox cmbAsigned;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblTicketID;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox cmbPriority;
         private System.Windows.Forms.Label label7;

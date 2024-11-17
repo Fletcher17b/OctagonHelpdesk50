@@ -20,9 +20,11 @@ namespace OctagonHelpdesk.Services
         //Para eliminar, busco su posicion y solo desactivo o inhabilito el estado del ticket
         public void RemoveTicket(Ticket ticket)
         {
-            //int position = FindPosition(ticket.IDTicket);
-            //Tickets[position].ActiveState = false;
-            tickets.Remove(ticket);
+            int position = FindPosition(ticket.IDTicket);
+            tickets[position].ActiveState = false;
+            tickets[position].DeactivationDate = DateTime.Now;
+
+
         }
         
         //Para actualizar, busco la posición del ticket y lo actualizo
@@ -30,6 +32,7 @@ namespace OctagonHelpdesk.Services
         {
             int position = FindPosition(ticket.IDTicket);
             tickets[position] = ticket;
+            tickets[position].LastUpdatedDate = DateTime.Now;
         }
         
         //Busco la posicion del ticket en la lista
@@ -43,6 +46,11 @@ namespace OctagonHelpdesk.Services
         public List<Ticket> GetTickets()
         {
             return tickets;
+        }
+
+        public Ticket GetTicket(int IDTicket)
+        {
+            return tickets.Find(ticket => ticket.IDTicket == IDTicket);
         }
         public int AutogeneradorID()
         {
