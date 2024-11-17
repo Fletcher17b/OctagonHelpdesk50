@@ -32,9 +32,9 @@ namespace OctagonHelpdesk.Formularios
             string inputuser = txbuser.Text;
             string inputpassword = txbpassword.Text;
 
-            this.DialogResult = DialogResult.OK;
-            submitted = true;
-            this.Close();
+            //this.DialogResult = DialogResult.OK;
+            //submitted = true;
+            //this.Close();
 
             if ((!string.IsNullOrEmpty(txbuser.Text) && !string.IsNullOrEmpty(txbpassword.Text)) && usuarioService.CheckUser(inputuser, inputpassword))
             {

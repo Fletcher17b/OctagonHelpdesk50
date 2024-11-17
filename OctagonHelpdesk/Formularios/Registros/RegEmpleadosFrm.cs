@@ -29,6 +29,7 @@ namespace OctagonHelpdesk.Formularios
             
             DgvRegUsuarios.DataSource = bindingSource1;
             bindingSource1.DataSource = usuarios.GetUsuarios();
+            bindingNavigatorDeleteItem.Enabled = false;
         }
 
         //Cada que se guarda un usuario, se analiza, guarda y actualiza en la lista de usuarios
@@ -53,6 +54,8 @@ namespace OctagonHelpdesk.Formularios
         {
             CrearUsuario();
         }
+
+        //Botones de la barra de herramientas, Elimina un registro
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
             var result = MessageBox.Show("¿Seguro que deseas eliminar este registro?", "Confirmación", MessageBoxButtons.YesNo);
@@ -111,6 +114,9 @@ namespace OctagonHelpdesk.Formularios
             formEmpleado.ShowDialog();
         }
 
-       
+        private void DgvRegUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            bindingNavigatorDeleteItem.Enabled = true;
+        }
     }
 }

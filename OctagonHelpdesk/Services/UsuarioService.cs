@@ -29,19 +29,23 @@ namespace OctagonHelpdesk.Services
 
         public void AddUsuario(UserModel usuario)
         {
+            usuario.CreationDate = DateTime.Now;
             usuarios.Add(usuario);
+
         }
         //public void RemoveUsuario(UserModel LoggedUser,UserModel usuario)
         public void RemoveUsuario(UserModel usuario)
         {
             int position = FindPosition(usuario.IDUser);
             usuarios[position].ActiveStateU = false;
+            usuarios[position].DeactivationDate = DateTime.Now;
 
         }
         public void UpdateUsuario(UserModel usuario)
         {
             int position = FindPosition(usuario.IDUser);
             usuarios[position] = usuario;
+            usuarios[position].LastUpdatedDate = DateTime.Now;
         }
 
         public List<UserModel> GetUsuarios()

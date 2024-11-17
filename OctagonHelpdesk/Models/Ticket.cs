@@ -14,23 +14,27 @@ namespace OctagonHelpdesk.Models
         public int CreadorPor { get; private set; }
         public string Subject { get; set; }
         public string Descripcion { get; set; }
-        public DateTime FechaCreacion { get; set; }
-        public DateTime FechaCierre { get; set; }
         public State StateProcess { get; set; }
         public Priority Prioridad { get; set; }
         public string AsignadoA { get; set; }
+        public DateTime CreationDate { get; set; }
+        public DateTime LastUpdatedDate { get; set; }
+        public DateTime DeactivationDate { get; set; }
+        public DateTime ReactivationDate { get; set; }
+        public DateTime CloseDate { get; set; }
+
 
 
 
 
         public Ticket()
         {
-            FechaCreacion = DateTime.Now;
+            
         }
         public Ticket(int creadorPorID)
         {
             CreadorPor = creadorPorID;
-            FechaCreacion = DateTime.Now;
+            
 
         }
 

@@ -29,6 +29,8 @@ namespace OctagonHelpdesk.Models
         public Departament Departamento { get; set; }
         public DateTime CreationDate { get; set; }
         public DateTime LastUpdatedDate { get; set; }
+        public DateTime DeactivationDate { get; set; }
+        public DateTime ReactivationDate { get; set; }
 
 
         private string EncryptedPassword;
