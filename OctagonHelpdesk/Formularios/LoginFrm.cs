@@ -38,7 +38,7 @@ namespace OctagonHelpdesk.Formularios
 
             bool temp = inputuser.Equals("User") && inputpassword.Equals("123");
             //&& usuarioService.CheckUser(inputuser, inputpassword)
-            if ((!string.IsNullOrEmpty(txbuser.Text) && !string.IsNullOrEmpty(txbpassword.Text)) && temp )
+            if ((!string.IsNullOrEmpty(txbuser.Text) && !string.IsNullOrEmpty(txbpassword.Text)) && inputuser.Equals("User") && inputpassword.Equals("123"))
             {
                 CurrentUser = new UserModel { 
                     Name = txbuser.Text              

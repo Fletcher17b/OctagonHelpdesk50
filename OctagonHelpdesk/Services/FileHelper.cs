@@ -14,6 +14,29 @@ namespace OctagonHelpdesk.Services
     {
         private string rutaArchivo = @"data\data.dat";
 
+        public FileHelper()
+        {
+            string path = rutaArchivo;
+            
+            if (!Directory.Exists("data"))
+            {
+                Directory.CreateDirectory("data");
+            }
+
+            string filePath =rutaArchivo;
+
+            if (!File.Exists(filePath))
+            {
+                
+                using (FileStream fs = File.Create(filePath))
+                {
+                  
+                }
+
+               
+            }
+
+        }
 
         private DateTime dateformater(string date)
         {
