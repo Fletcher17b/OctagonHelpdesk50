@@ -18,13 +18,13 @@ namespace OctagonHelpdesk.Formularios
     {
 
         public event Action<UserModel> UsuarioCreated;
-        private readonly UsuarioService usuarioServiceLocal;
+        private readonly UsuarioDao usuarioServiceLocal;
 
         public UserModel usuario = new UserModel();
         public UserModel usuarioSel = new UserModel();
 
         //Primer Constructor para cuando se crea un Usuario
-        public CrearUsuarioForm(UsuarioService usuarioService)
+        public CrearUsuarioForm(UsuarioDao usuarioService)
         {
             InitializeComponent();
             usuarioServiceLocal = usuarioService;
@@ -34,7 +34,7 @@ namespace OctagonHelpdesk.Formularios
         }
 
         //Segundo Constructor, cuando se selecciona un Usuario del DataGridView
-        public CrearUsuarioForm(UsuarioService usuarios, UserModel usuarioSelected)//Se envia la info del User Seleccionado
+        public CrearUsuarioForm(UsuarioDao usuarios, UserModel usuarioSelected)//Se envia la info del User Seleccionado
         {
             InitializeComponent();
             usuarioServiceLocal = usuarios;

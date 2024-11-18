@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OctagonHelpdesk.Services
 {
-    public class TicketService
+    public class TicketDao
     {
         public List<Ticket> tickets = new List<Ticket>();
 

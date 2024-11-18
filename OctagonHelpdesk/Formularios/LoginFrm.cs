@@ -24,7 +24,7 @@ namespace OctagonHelpdesk.Formularios
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            UsuarioService usuarioService = new UsuarioService();
+            UsuarioDao usuarioService = new UsuarioDao();
 
             string inputuser = txbuser.Text;
             string inputpassword = txbpassword.Text;

@@ -9,12 +9,12 @@ using OctagonHelpdesk.Models;
 
 namespace OctagonHelpdesk.Services
 {
-    public class UsuarioService
+    public class UsuarioDao
     {
         private List<UserModel> usuarios = new List<UserModel>();
         FileHelper fileHelper = new FileHelper();
 
-        public UsuarioService() 
+        public UsuarioDao() 
         {          
             MassFillLocal();
             fileHelper.SaveUser(usuarios,true);

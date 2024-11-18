@@ -9,7 +9,7 @@ namespace OctagonHelpdesk.Formularios
 {
     public partial class RegTicketFrm : Form
     {
-        public TicketService tickets = new TicketService();
+        public TicketDao tickets = new TicketDao();
         
         public RegTicketFrm()
         {

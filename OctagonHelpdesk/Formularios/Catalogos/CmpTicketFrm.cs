@@ -17,12 +17,12 @@ namespace OctagonHelpdesk.Formularios
     {
 
         public event Action<Ticket> TicketCreated;
-        private readonly TicketService ticketServiceLocal;
+        private readonly TicketDao ticketServiceLocal;
         public Ticket ticket = new Ticket();
         public Ticket ticketSel = new Ticket();
 
         // Constructor para crear un nuevo ticket
-        public CmpTicketFrm(TicketService ticketService)
+        public CmpTicketFrm(TicketDao ticketService)
         {
             InitializeComponent();
             ticketServiceLocal = ticketService;
@@ -30,7 +30,7 @@ namespace OctagonHelpdesk.Formularios
         }
 
         // Constructor para editar un ticket existente
-        public CmpTicketFrm(TicketService ticketService, Ticket ticketSelected)
+        public CmpTicketFrm(TicketDao ticketService, Ticket ticketSelected)
         {
             InitializeComponent();
             ticketServiceLocal = ticketService;

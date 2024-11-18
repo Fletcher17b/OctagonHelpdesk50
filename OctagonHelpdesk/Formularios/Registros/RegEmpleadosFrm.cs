@@ -16,7 +16,7 @@ namespace OctagonHelpdesk.Formularios
 {
     public partial class RegEmpleadosFrm : Form
     {
-        public UsuarioService usuarios = new UsuarioService();
+        public UsuarioDao usuarios = new UsuarioDao();
       
         public RegEmpleadosFrm()
         {

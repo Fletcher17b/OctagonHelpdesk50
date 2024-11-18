@@ -108,9 +108,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileHelper.cs" />
     <Compile Include="Services\HelperPassword.cs" />
-    <Compile Include="Services\TicketService.cs" />
+    <Compile Include="Dao\TicketDao.cs" />
     <Compile Include="Services\UserRolesService.cs" />
-    <Compile Include="Services\UsuarioService.cs" />
+    <Compile Include="Dao\UsuarioDao.cs" />
     <EmbeddedResource Include="Formularios\Catalogos\CmpTicketFrm.resx">
       <DependentUpon>CmpTicketFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,7 +159,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dao\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
