@@ -12,20 +12,45 @@ namespace OctagonHelpdesk.Services
     public class UsuarioService
     {
         private List<UserModel> usuarios = new List<UserModel>();
-        
+        FileHelper fileHelper = new FileHelper();
+
         public UsuarioService() 
-        {
+        {          
             MassFillLocal();
+            fileHelper.SaveUser(usuarios,true);
+            Fillusers();
         }
 
         private void MassFillLocal()
         {
             UserModel TestingUser = new UserModel();
-            TestingUser.MassFill(1, true, "123");
+            UserModel TestingUser2 = new UserModel();
+            TestingUser.MassFill(1, true, "123","Mario");
+            TestingUser2.MassFill(2, true, "321", "Banano");
             AddUsuario(TestingUser);
+            AddUsuario(TestingUser2);
         }
 
 
+        public void Fillusers()
+        {
+            
+            usuarios = fileHelper.GetUsers();
+            List < UserModel> temp = fileHelper.GetUsers();
+            if (usuarios == null)
+            {
+                MessageBox.Show("imbecil");
+            }
+            else
+            {
+                foreach (var user in temp)
+                {
+                    Console.WriteLine(user.IDUser);
+                    Console.WriteLine(user.Name);
+                    Console.WriteLine(user.GetPassword(true));
+                }
+            }
+        }
 
         public void AddUsuario(UserModel usuario)
         {
@@ -81,18 +106,14 @@ namespace OctagonHelpdesk.Services
                 ID = int.Parse(UserID);
             }
             catch { }
-            
-            for (int i = 0; i < usuarios.Count; i++)
-            {
-                if ((ID == usuarios[i].IDUser)&&ID != 0) 
-                { 
-                    if (usuarios[i].ChecKPassword(password))
-                    {
-                        return true;
-                    }
 
+            foreach (var user in usuarios)
+            {
+                if (user.IDUser == ID)
+                {
+                    return user.ChecKPassword(password);
                 }
-            }
+            } 
 
             return false;
         }

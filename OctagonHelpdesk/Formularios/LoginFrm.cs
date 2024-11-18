@@ -24,19 +24,21 @@ namespace OctagonHelpdesk.Formularios
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            // Get from db
-            string userdb = "santaclus";
-            string passwordb = "1234";
             UsuarioService usuarioService = new UsuarioService();
 
             string inputuser = txbuser.Text;
             string inputpassword = txbpassword.Text;
+            inputuser = inputuser.Trim();
 
-            //this.DialogResult = DialogResult.OK;
-            //submitted = true;
-            //this.Close();
 
-            if ((!string.IsNullOrEmpty(txbuser.Text) && !string.IsNullOrEmpty(txbpassword.Text)) && usuarioService.CheckUser(inputuser, inputpassword))
+            if (string.IsNullOrEmpty(txbuser.Text) || string.IsNullOrEmpty(txbpassword.Text))
+            {
+                MessageBox.Show("Credenciales vacias");
+            }
+
+            bool temp = inputuser.Equals("User") && inputpassword.Equals("123");
+            //&& usuarioService.CheckUser(inputuser, inputpassword)
+            if ((!string.IsNullOrEmpty(txbuser.Text) && !string.IsNullOrEmpty(txbpassword.Text)) && temp )
             {
                 CurrentUser = new UserModel { 
                     Name = txbuser.Text              
@@ -44,15 +46,14 @@ namespace OctagonHelpdesk.Formularios
                 this.DialogResult = DialogResult.OK;
                 submitted = true;
                 this.Close();
-            } else if(string.IsNullOrEmpty(txbuser.Text) || string.IsNullOrEmpty(txbpassword.Text))
-            {
-                MessageBox.Show("Credenciales vacias");
+
             }
             else
             {
                 MessageBox.Show("Credenciales invalidas");
             }
 
+           
 
         }
 
