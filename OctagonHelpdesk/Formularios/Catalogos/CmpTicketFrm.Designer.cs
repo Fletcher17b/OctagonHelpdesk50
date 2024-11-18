@@ -76,7 +76,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 21);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Descripcion:";
+            this.label3.Text = "Descripción:";
             // 
             // label4
             // 
@@ -113,7 +113,7 @@
             this.txtSubject.Location = new System.Drawing.Point(198, 84);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(363, 29);
-            this.txtSubject.TabIndex = 7;
+            this.txtSubject.TabIndex = 0;
             // 
             // txtDescription
             // 
@@ -122,8 +122,8 @@
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescription.Size = new System.Drawing.Size(242, 79);
-            this.txtDescription.TabIndex = 8;
+            this.txtDescription.Size = new System.Drawing.Size(363, 79);
+            this.txtDescription.TabIndex = 1;
             // 
             // cmbState
             // 
@@ -131,8 +131,8 @@
             this.cmbState.FormattingEnabled = true;
             this.cmbState.Location = new System.Drawing.Point(198, 289);
             this.cmbState.Name = "cmbState";
-            this.cmbState.Size = new System.Drawing.Size(167, 29);
-            this.cmbState.TabIndex = 9;
+            this.cmbState.Size = new System.Drawing.Size(363, 29);
+            this.cmbState.TabIndex = 3;
             // 
             // cmbAsigned
             // 
@@ -141,7 +141,7 @@
             this.cmbAsigned.FormattingEnabled = true;
             this.cmbAsigned.Location = new System.Drawing.Point(198, 341);
             this.cmbAsigned.Name = "cmbAsigned";
-            this.cmbAsigned.Size = new System.Drawing.Size(167, 29);
+            this.cmbAsigned.Size = new System.Drawing.Size(363, 29);
             this.cmbAsigned.TabIndex = 10;
             // 
             // btnSave
@@ -193,8 +193,8 @@
             this.cmbPriority.FormattingEnabled = true;
             this.cmbPriority.Location = new System.Drawing.Point(198, 230);
             this.cmbPriority.Name = "cmbPriority";
-            this.cmbPriority.Size = new System.Drawing.Size(167, 29);
-            this.cmbPriority.TabIndex = 15;
+            this.cmbPriority.Size = new System.Drawing.Size(363, 29);
+            this.cmbPriority.TabIndex = 2;
             // 
             // label7
             // 
