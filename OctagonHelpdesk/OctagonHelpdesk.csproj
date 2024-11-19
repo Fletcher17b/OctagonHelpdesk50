@@ -168,6 +168,8 @@
     <Content Include="Assets\stacked-waves-haikei%28720p%29.png" />
     <Content Include="Assets\stacked-waves-haikei.png" />
     <Content Include="Assets\wavebckg.jpg" />
+    <None Include="Resources\password.png" />
+    <None Include="Resources\ticketLogin.png" />
     <None Include="Resources\Boton1.png" />
     <None Include="Resources\adjuntar-archivo.png" />
     <None Include="Resources\ImgFondoWaveBack.bmp" />
