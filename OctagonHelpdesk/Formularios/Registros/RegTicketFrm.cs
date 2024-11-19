@@ -43,8 +43,6 @@ namespace OctagonHelpdesk.Formularios
             {
                 EditarTicket(SelectedTicketRow());
             }
-
-
         }
 
         //Boton de Eliminar
@@ -85,7 +83,6 @@ namespace OctagonHelpdesk.Formularios
             CmpTicketFrm ticketFrm = new CmpTicketFrm(tickets);
             ticketFrm.TicketCreated += OnTicketCreated;
             ticketFrm.ShowDialog();
-           
         }
 
         //Manda a llamar al formulario de edición de tickets

@@ -15,10 +15,10 @@ namespace OctagonHelpdesk.Services
         FileHelper fileHelper = new FileHelper();
 
         public UsuarioDao() 
-        {          
-            MassFillLocal();
-            fileHelper.SaveUser(usuarios,true);
-            Fillusers();
+        {
+            //MassFillLocal();
+            //fileHelper.SaveUser(usuarios,true);
+            usuarios = fileHelper.GetUsers();
         }
 
         private void MassFillLocal()
@@ -32,30 +32,31 @@ namespace OctagonHelpdesk.Services
         }
 
 
-        public void Fillusers()
+        public void Fillusers(List<UserModel> usuariosL)
         {
             
-            usuarios = fileHelper.GetUsers();
-            List < UserModel> temp = fileHelper.GetUsers();
-            if (usuarios == null)
-            {
-                MessageBox.Show("imbecil");
-            }
-            else
-            {
-                foreach (var user in temp)
-                {
-                    Console.WriteLine(user.IDUser);
-                    Console.WriteLine(user.Name);
-                    Console.WriteLine(user.GetPassword(true));
-                }
-            }
+            usuariosL = fileHelper.GetUsers();
+            //List < UserModel> temp = fileHelper.GetUsers();
+            //if (usuarios == null)
+            //{
+            //    MessageBox.Show("Error", "Recorda este error dao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //else
+            //{
+            //    foreach (var user in temp)
+            //    {
+            //        Console.WriteLine(user.IDUser);
+            //        Console.WriteLine(user.Name);
+            //        Console.WriteLine(user.GetPassword(true));
+            //    }
+            //}
         }
 
         public void AddUsuario(UserModel usuario)
         {
             usuario.CreationDate = DateTime.Now;
             usuarios.Add(usuario);
+            fileHelper.SaveUsers(usuarios, true);
 
         }
         //public void RemoveUsuario(UserModel LoggedUser,UserModel usuario)
@@ -64,17 +65,19 @@ namespace OctagonHelpdesk.Services
             int position = FindPosition(usuario.IDUser);
             usuarios[position].ActiveStateU = false;
             usuarios[position].DeactivationDate = DateTime.Now;
-
+            fileHelper.SaveUsers(usuarios, true);
         }
         public void UpdateUsuario(UserModel usuario)
         {
             int position = FindPosition(usuario.IDUser);
             usuarios[position] = usuario;
             usuarios[position].LastUpdatedDate = DateTime.Now;
+            fileHelper.SaveUsers(usuarios, true);
         }
 
         public List<UserModel> GetUsuarios()
         {
+
             return usuarios;
         }
 

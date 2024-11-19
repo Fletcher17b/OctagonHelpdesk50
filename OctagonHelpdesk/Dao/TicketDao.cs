@@ -9,7 +9,7 @@ namespace OctagonHelpdesk.Services
 {
     public class TicketDao
     {
-        public List<Ticket> tickets = new List<Ticket>();
+        private List<Ticket> tickets = new List<Ticket>();
 
         //Añado el ticket a la lista de tickets
         public void AddTicket(Ticket ticket)
@@ -23,8 +23,6 @@ namespace OctagonHelpdesk.Services
             int position = FindPosition(ticket.IDTicket);
             tickets[position].ActiveState = false;
             tickets[position].DeactivationDate = DateTime.Now;
-
-
         }
         
         //Para actualizar, busco la posición del ticket y lo actualizo

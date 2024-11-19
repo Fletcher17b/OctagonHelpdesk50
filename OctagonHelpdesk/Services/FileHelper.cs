@@ -16,15 +16,18 @@ namespace OctagonHelpdesk.Services
 
         public FileHelper()
         {
+            //Ruta del archivo
             string path = rutaArchivo;
-            
+
+            //Si no existe el directorio, lo crea
             if (!Directory.Exists("data"))
             {
                 Directory.CreateDirectory("data");
             }
 
+            //Si no existe el archivo, lo crea
             string filePath =rutaArchivo;
-
+            
             if (!File.Exists(filePath))
             {
                 
@@ -42,7 +45,7 @@ namespace OctagonHelpdesk.Services
         {
             return DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
-        public void SaveUser(List<UserModel> userLists, bool perms)
+        public void SaveUsers(List<UserModel> userLists, bool perms)
         {
             using (FileStream archivo = new FileStream(rutaArchivo, FileMode.Create, FileAccess.Write))
             {
@@ -61,11 +64,27 @@ namespace OctagonHelpdesk.Services
                         escritor.Write((int)user.Departamento);
                         string fechaComoCadena = user.CreationDate.ToString("dd/MM/yyyy");
                         escritor.Write(fechaComoCadena);
-                        escritor.Write(user.GetPassword(perms));
+                        //escritor.Write(user.GetPassword(perms));
                         escritor.Write(user.CreationDate.ToString("dd/MM/yyyy"));
-                        escritor.Write(user.LastUpdatedDate.ToString("dd/MM/yyyy"));
-                        escritor.Write(user.DeactivationDate.ToString("dd/MM/yyyy"));
-                        escritor.Write(user.ReactivationDate.ToString("dd/MM/yyyy"));
+                        // Escribir LastUpdatedDate
+                        escritor.Write(user.LastUpdatedDate.HasValue);
+                        if (user.LastUpdatedDate.HasValue)
+                        {
+                            escritor.Write(user.LastUpdatedDate.Value.ToString("dd/MM/yyyy"));
+                        }
+                        // Escribir DeactivationDate
+                        escritor.Write(user.DeactivationDate.HasValue);
+                        if (user.DeactivationDate.HasValue)
+                        {
+                            escritor.Write(user.DeactivationDate.Value.ToString("dd/MM/yyyy"));
+                        }
+
+                        // Escribir ReactivationDate
+                        escritor.Write(user.ReactivationDate.HasValue);
+                        if (user.ReactivationDate.HasValue)
+                        {
+                            escritor.Write(user.ReactivationDate.Value.ToString("dd/MM/yyyy"));
+                        }
                     }
                 }
             }
@@ -103,11 +122,26 @@ namespace OctagonHelpdesk.Services
                             string fechaComoCadena = lector.ReadString();
                             userModel.CreationDate = DateTime.ParseExact(fechaComoCadena, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-                            userModel.SetPassword(lector.ReadString(), false);
+                            //userModel.SetPassword(lector.ReadString(), false);
                             userModel.CreationDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            userModel.LastUpdatedDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            userModel.DeactivationDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            userModel.ReactivationDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                            // Leer LastUpdatedDate
+                            if (lector.ReadBoolean())
+                            {
+                                userModel.LastUpdatedDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                            }
+
+                            // Leer DeactivationDate
+                            if (lector.ReadBoolean())
+                            {
+                                userModel.DeactivationDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                            }
+
+                            // Leer ReactivationDate
+                            if (lector.ReadBoolean())
+                            {
+                                userModel.ReactivationDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                            }
+
 
                             userModels.Add(userModel);
                         }

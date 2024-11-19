@@ -24,16 +24,16 @@ namespace OctagonHelpdesk.Formularios
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            UsuarioDao usuarioService = new UsuarioDao();
+            UsuarioDao usuarioDao = new UsuarioDao();
 
-            string inputuser = txbuser.Text;
+            string inputuser = txbuser.Text.Trim();
             string inputpassword = txbpassword.Text;
-            inputuser = inputuser.Trim();
+            
 
 
             if (string.IsNullOrEmpty(txbuser.Text) || string.IsNullOrEmpty(txbpassword.Text))
             {
-                MessageBox.Show("Credenciales vacias");
+                MessageBox.Show("Credenciales vacias", "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             bool temp = inputuser.Equals("User") && inputpassword.Equals("123");

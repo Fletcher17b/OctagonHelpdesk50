@@ -17,15 +17,15 @@ namespace OctagonHelpdesk.Formularios
     {
 
         public event Action<Ticket> TicketCreated;
-        private readonly TicketDao ticketServiceLocal;
+        private readonly TicketDao ticketDaoLocal;
         public Ticket ticket = new Ticket();
         public Ticket ticketSel = new Ticket();
 
         // Constructor para crear un nuevo ticket
-        public CmpTicketFrm(TicketDao ticketService)
+        public CmpTicketFrm(TicketDao ticketDao)
         {
             InitializeComponent();
-            ticketServiceLocal = ticketService;
+            ticketDaoLocal = ticketDao;
             InitializeFormWithoutTicketData();
         }
 
@@ -33,7 +33,7 @@ namespace OctagonHelpdesk.Formularios
         public CmpTicketFrm(TicketDao ticketService, Ticket ticketSelected)
         {
             InitializeComponent();
-            ticketServiceLocal = ticketService;
+            ticketDaoLocal = ticketService;
             ticketSel = ticketSelected;
             InitializeFormWithTicketData();
         }
@@ -41,7 +41,7 @@ namespace OctagonHelpdesk.Formularios
         // Inicializar el formulario para crear un nuevo ticket
         private void InitializeFormWithoutTicketData()
         {
-            ticket.IDTicket = ticketServiceLocal.AutogeneradorID();
+            ticket.IDTicket = ticketDaoLocal.AutogeneradorID();
             lblTicketID.Text = $"Ticket # {ticket.IDTicket}";
             ticket.CreationDate = DateTime.Now;
             ticket.ActiveState = true;

@@ -77,10 +77,10 @@ namespace OctagonHelpdesk.Formularios
             string email = tbEmail.Text;
             int indexUsuario = int.Parse(tbIDUser.Text);
 
-            usuarioValid = ValidarDatos(); //Validar los datos ingresados
+            usuarioValid = ValidarDatos() && ValidarPermisos(); //Validar los datos ingresados
 
-            try
-            {
+            //try
+            //{
                 if (usuarioValid)
                 {
                     usuario.IDUser = int.Parse(tbIDUser.Text);
@@ -88,6 +88,12 @@ namespace OctagonHelpdesk.Formularios
                     usuario.Lastname = lastname;
                     usuario.Email = email;
                     usuario.Departamento = (Departament)cmbDepartamento.SelectedItem;
+
+                    usuario.Roles.ITPerms = cbAdmin.Checked ? true : false;
+                    usuario.Roles.AdminPerms = cbAdmin.Checked ? true : false;
+                    usuario.Roles.BasicPerms = cbAdmin.Checked ? true : false;
+                        
+                    
 
                     usuarioValid = true;
                     UsuarioCreated?.Invoke(usuario);
@@ -97,13 +103,13 @@ namespace OctagonHelpdesk.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("Revise el Formato de los Datos Ingresados", "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Revise el Formato de los Datos Ingresados, No se admiten campis vacíos. Minimo uno de los permisos debe estar activo", "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error: " + ex.Message, "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         public bool ValidarDatos()
@@ -113,6 +119,14 @@ namespace OctagonHelpdesk.Formularios
                 return false;
             }
             return true;
+        }
+        public bool ValidarPermisos()
+        {
+            if (cbAdmin.Checked || cbEmpleado.Checked || cbIT.Checked)
+            {
+                return true;
+            }
+            return false;
         }
     
 
