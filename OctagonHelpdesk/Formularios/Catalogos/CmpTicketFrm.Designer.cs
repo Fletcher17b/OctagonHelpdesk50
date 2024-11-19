@@ -51,50 +51,50 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(46, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 21);
+            this.label2.Size = new System.Drawing.Size(107, 18);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Creado Por:";
+            this.label2.Text = "Creado por:";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label1.Location = new System.Drawing.Point(51, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 21);
+            this.label1.Size = new System.Drawing.Size(71, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Asunto:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label3.Location = new System.Drawing.Point(46, 129);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 21);
+            this.label3.Size = new System.Drawing.Size(116, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Descripción:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label4.Location = new System.Drawing.Point(51, 291);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 21);
+            this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 4;
             this.label4.Text = "Estado:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label5.Location = new System.Drawing.Point(51, 344);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 21);
+            this.label5.Size = new System.Drawing.Size(107, 18);
             this.label5.TabIndex = 5;
             this.label5.Text = "Asignado a:";
             // 
@@ -147,6 +147,7 @@
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnSave.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(254, 475);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(146, 54);
@@ -199,10 +200,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label7.Location = new System.Drawing.Point(51, 232);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 21);
+            this.label7.Size = new System.Drawing.Size(98, 18);
             this.label7.TabIndex = 14;
             this.label7.Text = "Prioridad:";
             // 
@@ -210,10 +211,10 @@
             // 
             this.lblTicketID.AutoSize = true;
             this.lblTicketID.BackColor = System.Drawing.Color.Transparent;
-            this.lblTicketID.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTicketID.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTicketID.Location = new System.Drawing.Point(207, 9);
             this.lblTicketID.Name = "lblTicketID";
-            this.lblTicketID.Size = new System.Drawing.Size(241, 54);
+            this.lblTicketID.Size = new System.Drawing.Size(235, 32);
             this.lblTicketID.TabIndex = 16;
             this.lblTicketID.Text = "Crear Ticket:";
             // 

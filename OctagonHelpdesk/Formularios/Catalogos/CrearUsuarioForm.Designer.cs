@@ -65,10 +65,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 16F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(90, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(271, 54);
+            this.label1.Size = new System.Drawing.Size(252, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "Crear Usuario:";
             // 
@@ -106,10 +106,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label7.Location = new System.Drawing.Point(177, 158);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 21);
+            this.label7.Size = new System.Drawing.Size(89, 18);
             this.label7.TabIndex = 15;
             this.label7.Text = "Apellido:";
             // 
@@ -125,9 +125,10 @@
             // cbEmpleado
             // 
             this.cbEmpleado.AutoSize = true;
+            this.cbEmpleado.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEmpleado.Location = new System.Drawing.Point(508, 345);
             this.cbEmpleado.Name = "cbEmpleado";
-            this.cbEmpleado.Size = new System.Drawing.Size(107, 24);
+            this.cbEmpleado.Size = new System.Drawing.Size(97, 21);
             this.cbEmpleado.TabIndex = 6;
             this.cbEmpleado.Text = "Empleado";
             this.cbEmpleado.UseVisualStyleBackColor = true;
@@ -135,9 +136,10 @@
             // cbIT
             // 
             this.cbIT.AutoSize = true;
+            this.cbIT.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIT.Location = new System.Drawing.Point(382, 345);
             this.cbIT.Name = "cbIT";
-            this.cbIT.Size = new System.Drawing.Size(108, 24);
+            this.cbIT.Size = new System.Drawing.Size(113, 21);
             this.cbIT.TabIndex = 5;
             this.cbIT.Text = "Tecnico IT";
             this.cbIT.UseVisualStyleBackColor = true;
@@ -145,9 +147,10 @@
             // cbAdmin
             // 
             this.cbAdmin.AutoSize = true;
+            this.cbAdmin.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbAdmin.Location = new System.Drawing.Point(282, 345);
             this.cbAdmin.Name = "cbAdmin";
-            this.cbAdmin.Size = new System.Drawing.Size(80, 24);
+            this.cbAdmin.Size = new System.Drawing.Size(73, 21);
             this.cbAdmin.TabIndex = 4;
             this.cbAdmin.Text = "Admin";
             this.cbAdmin.UseVisualStyleBackColor = true;
@@ -155,6 +158,7 @@
             // btnConfirmUserCreation
             // 
             this.btnConfirmUserCreation.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnConfirmUserCreation.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmUserCreation.Location = new System.Drawing.Point(303, 391);
             this.btnConfirmUserCreation.Name = "btnConfirmUserCreation";
             this.btnConfirmUserCreation.Size = new System.Drawing.Size(168, 66);
@@ -190,50 +194,50 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label6.Location = new System.Drawing.Point(177, 337);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 21);
+            this.label6.Size = new System.Drawing.Size(89, 18);
             this.label6.TabIndex = 5;
             this.label6.Text = "Permisos:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label5.Location = new System.Drawing.Point(148, 282);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 21);
+            this.label5.Size = new System.Drawing.Size(125, 18);
             this.label5.TabIndex = 3;
             this.label5.Text = "Departamento:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label4.Location = new System.Drawing.Point(201, 214);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 21);
+            this.label4.Size = new System.Drawing.Size(62, 18);
             this.label4.TabIndex = 2;
             this.label4.Text = "Email:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label3.Location = new System.Drawing.Point(177, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 21);
+            this.label3.Size = new System.Drawing.Size(71, 18);
             this.label3.TabIndex = 1;
             this.label3.Text = "Nombre:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label2.Location = new System.Drawing.Point(126, 37);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 21);
+            this.label2.Size = new System.Drawing.Size(143, 18);
             this.label2.TabIndex = 0;
             this.label2.Text = "ID de empleado:";
             // 
