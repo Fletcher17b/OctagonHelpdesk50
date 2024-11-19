@@ -14,11 +14,17 @@ namespace OctagonHelpdesk
 {
     public partial class MdiParentFrm : Form
     {
+        private bool isExpanded = true; // Indica si el sidebar está expandido
+        private int sidebarWidthExpanded = 150; // Ancho expandido
+        private int sidebarWidthCollapsed = 50;  // Ancho colapsado
+        private int animationStep = 5; // Velocidad de la animación
         private int childFormNumber = 0;
         UserModel currentuser { get;set; }
         public MdiParentFrm()
         {
             InitializeComponent();
+            animationTimer.Interval = 15; // Velocidad de refresco (15 ms)
+            
         }
 
         private void ShowNewForm(object sender, EventArgs e)
@@ -125,8 +131,53 @@ namespace OctagonHelpdesk
             frame.Show();
         }
 
-        
+       
+        private void ToggleSidebar(object sender, EventArgs e)
+        {
+            // Iniciar animación cuando se hace clic en el botón
+            if (!animationTimer.Enabled)
+            {
+                animationTimer.Start();
+            }
+        }
 
-        
+        private void AnimateSidebar(object sender, EventArgs e)
+        {
+            if (isExpanded)
+            {
+                // Colapsar el sidebar
+                sidebar.Width -= animationStep;
+                if (sidebar.Width <= sidebarWidthCollapsed)
+                {
+                    sidebar.Width = sidebarWidthCollapsed;
+                    isExpanded = false;
+                    btnRegTickets.Text = "";
+                    animationTimer.Stop();
+                }
+            }
+            else
+            {
+                // Expandir el sidebar
+                sidebar.Width += animationStep;
+                if (sidebar.Width >= sidebarWidthExpanded)
+                {
+                    btnRegTickets.Text = "Tickets";
+                    sidebar.Width = sidebarWidthExpanded;
+                    isExpanded = true;
+                    animationTimer.Stop();
+                }
+            }
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            ToggleSidebar(sender, e);
+        }
+
+        private void animationTimer_Tick(object sender, EventArgs e)
+        {
+            AnimateSidebar(sender, e);
+        }
     }
 }
+
