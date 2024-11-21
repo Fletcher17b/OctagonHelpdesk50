@@ -1,67 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using OctagonHelpdesk.Helpers;
 using OctagonHelpdesk.Models;
-using OctagonHelpdesk.Services;
 
-namespace OctagonHelpdesk.Formularios
+namespace OctagonHelpdesk
 {
     public partial class LoginFrm : Form
     {
-        public bool submitted = false;
-        public UserModel CurrentUser { get; set; }
+        public UserModel CurrentUser { get; private set; }
+        private bool submitted = false;
+
         public LoginFrm()
         {
             InitializeComponent();
-            
         }
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
-            UsuarioDao usuarioDao = new UsuarioDao();
-
             string inputuser = txbuser.Text.Trim();
-            string inputpassword = txbpassword.Text;
-            
+            string inputpassword = txbpassword.Text.Trim();
 
-
-            if (string.IsNullOrEmpty(txbuser.Text) || string.IsNullOrEmpty(txbpassword.Text))
+            if (string.IsNullOrEmpty(inputuser) || string.IsNullOrEmpty(inputpassword))
             {
-                MessageBox.Show("Credenciales vacias", "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-            bool temp = inputuser.Equals("User") && inputpassword.Equals("123");
-            //&& usuarioService.CheckUser(inputuser, inputpassword)
-            if ((!string.IsNullOrEmpty(txbuser.Text) && !string.IsNullOrEmpty(txbpassword.Text)) && inputuser.Equals("User") && inputpassword.Equals("123"))
-            {
-                CurrentUser = new UserModel { 
-                    Name = txbuser.Text              
-                };
-                this.DialogResult = DialogResult.OK;
-                submitted = true;
-                this.Close();
-
+                MessageBox.Show("Credenciales vacías", "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show("Credenciales invalidas");
+                // Verificar las credenciales utilizando AuthenticationService
+                if (AuthenticationService.ValidateCredentials(inputuser, inputpassword))
+                {
+                    CurrentUser = AuthenticationService.GetCurrentUser(inputuser);
+                    this.DialogResult = DialogResult.OK;
+                    submitted = true;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Credenciales inválidas");
+                }
             }
-
-           
-
         }
-
-        private void LoginFrm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        
     }
 }

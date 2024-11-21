@@ -21,15 +21,7 @@ namespace OctagonHelpdesk.Services
             usuarios = fileHelper.GetUsers();
         }
 
-        private void MassFillLocal()
-        {
-            UserModel TestingUser = new UserModel();
-            UserModel TestingUser2 = new UserModel();
-            TestingUser.MassFill(1, true, "123","Mario");
-            TestingUser2.MassFill(2, true, "321", "Banano");
-            AddUsuario(TestingUser);
-            AddUsuario(TestingUser2);
-        }
+        
 
 
         public void Fillusers(List<UserModel> usuariosL)
@@ -56,7 +48,7 @@ namespace OctagonHelpdesk.Services
         {
             usuario.CreationDate = DateTime.Now;
             usuarios.Add(usuario);
-            fileHelper.SaveUsers(usuarios, true);
+            fileHelper.SaveUsers(usuarios);
 
         }
         //public void RemoveUsuario(UserModel LoggedUser,UserModel usuario)
@@ -65,14 +57,14 @@ namespace OctagonHelpdesk.Services
             int position = FindPosition(usuario.IDUser);
             usuarios[position].ActiveStateU = false;
             usuarios[position].DeactivationDate = DateTime.Now;
-            fileHelper.SaveUsers(usuarios, true);
+            fileHelper.SaveUsers(usuarios);
         }
         public void UpdateUsuario(UserModel usuario)
         {
             int position = FindPosition(usuario.IDUser);
             usuarios[position] = usuario;
             usuarios[position].LastUpdatedDate = DateTime.Now;
-            fileHelper.SaveUsers(usuarios, true);
+            fileHelper.SaveUsers(usuarios);
         }
 
         public List<UserModel> GetUsuarios()
@@ -85,6 +77,11 @@ namespace OctagonHelpdesk.Services
         {
             return usuarios.Find(usuario => usuario.IDUser == id);
         }
+        public UserModel GetUsuario(string username)
+        {
+            return usuarios.Find(usuario => usuario.Username == username);
+        }
+
 
         public int AutogeneradorID()
         {
@@ -99,27 +96,5 @@ namespace OctagonHelpdesk.Services
             return usuarios.FindIndex(usuario => usuario.IDUser == id);
 
         }
-
-
-        public bool CheckUser(string UserID, string password)
-        {
-            int ID = 0;
-            try
-            {
-                ID = int.Parse(UserID);
-            }
-            catch { }
-
-            foreach (var user in usuarios)
-            {
-                if (user.IDUser == ID)
-                {
-                    return user.ChecKPassword(password);
-                }
-            } 
-
-            return false;
-        }
-
     }
 }

@@ -4,22 +4,28 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OctagonHelpdesk.Formularios;
 using OctagonHelpdesk.Models;
 
+
 namespace OctagonHelpdesk
 {
     public partial class MdiParentFrm : Form
     {
+        //SIDE BAR ANIMATION
+        [DllImport("user32.dll")]
+        private static extern int SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private const int WM_SETREDRAW = 0x000B;
         private bool isExpanded = true; // Indica si el sidebar está expandido
         private int sidebarWidthExpanded = 150; // Ancho expandido
         private int sidebarWidthCollapsed = 50;  // Ancho colapsado
         private int animationStep = 5; // Velocidad de la animación
-        private int childFormNumber = 0;
         UserModel currentuser { get;set; }
+
         public MdiParentFrm()
         {
             InitializeComponent();
@@ -27,58 +33,32 @@ namespace OctagonHelpdesk
             
         }
 
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Ventana " + childFormNumber++;
-            childForm.Show();
-        }
-
-        private void OpenFile(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
-            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = openFileDialog.FileName;
-            }
-        }
-
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Archivos de texto (*.txt)|*.txt|Todos los archivos (*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string FileName = saveFileDialog.FileName;
-            }
-        }
-
+        //Archivo, Salir
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
+        //Formulario Login
         private void On_Load(object sender, EventArgs e)
         {
             using (LoginFrm loginForm = new LoginFrm())
             {
-                if (!(loginForm.ShowDialog(this) == DialogResult.OK))
+                if (loginForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    currentuser = loginForm.CurrentUser;
+                    // Aquí puedes agregar lógica adicional para manejar el usuario logueado
+                }
+                else
                 {
                     this.Close();
                 }
-
-                currentuser = loginForm.CurrentUser;
-
             }
         }
 
-        
-        
 
+
+        //Formulario Registro de Tickets
         private void ticketToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RegTicketFrm regTicketFrm = Application.OpenForms.OfType<RegTicketFrm>().FirstOrDefault();
@@ -102,6 +82,7 @@ namespace OctagonHelpdesk
 
         }
 
+        //Formulario Registro de Usuarios
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -125,27 +106,40 @@ namespace OctagonHelpdesk
             }
         }
 
+        //Test
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Frame frame = new Frame();
             frame.Show();
         }
 
-       
+
+        //****SIDE BAR ANIMATION****
         private void ToggleSidebar(object sender, EventArgs e)
         {
-            // Iniciar animación cuando se hace clic en el botón
-            if (!animationTimer.Enabled)
+            // Evita activar la animación si ya está en curso
+            if (animationTimer.Enabled) return;
+
+            // Ajusta el estado inicial para evitar el clic extra
+            if (sidebar.Width == sidebarWidthExpanded)
             {
-                animationTimer.Start();
+                isExpanded = true; // Si el ancho es igual al expandido, la barra está expandida
             }
+            else if (sidebar.Width == sidebarWidthCollapsed)
+            {
+                isExpanded = false; // Si el ancho es igual al colapsado, la barra está colapsada
+            }
+
+            // Deshabilitar el redibujado mientras la animación ocurre
+            SendMessage(this.Handle, WM_SETREDRAW, 0, 0);  // Desactivar redibujado
+
+            animationTimer.Start(); // Iniciar animación
         }
 
         private void AnimateSidebar(object sender, EventArgs e)
         {
             if (isExpanded)
             {
-                // Colapsar el sidebar
                 sidebar.Width -= animationStep;
                 if (sidebar.Width <= sidebarWidthCollapsed)
                 {
@@ -153,18 +147,25 @@ namespace OctagonHelpdesk
                     isExpanded = false;
                     btnRegTickets.Text = "";
                     animationTimer.Stop();
+
+                    // Reactiva el redibujado al finalizar la animación
+                    SendMessage(this.Handle, WM_SETREDRAW, 1, 0);
+                    this.Refresh(); // Forzar redibujado
                 }
             }
             else
             {
-                // Expandir el sidebar
                 sidebar.Width += animationStep;
                 if (sidebar.Width >= sidebarWidthExpanded)
                 {
-                    btnRegTickets.Text = "Tickets";
                     sidebar.Width = sidebarWidthExpanded;
                     isExpanded = true;
+                    btnRegTickets.Text = "Tickets";
                     animationTimer.Stop();
+
+                    // Reactiva el redibujado al finalizar la animación
+                    SendMessage(this.Handle, WM_SETREDRAW, 1, 0);
+                    this.Refresh(); // Forzar redibujado
                 }
             }
         }
@@ -177,6 +178,18 @@ namespace OctagonHelpdesk
         private void animationTimer_Tick(object sender, EventArgs e)
         {
             AnimateSidebar(sender, e);
+        }
+
+        //****HOVER EFFECTS****
+        private void btnRegTickets_MouseHover(object sender, EventArgs e)
+        {
+            btnRegTickets.BackColor = Color.FromArgb(0, 122, 204);
+
+        }
+
+        private void btnMenu_MouseHover(object sender, EventArgs e)
+        {
+            btnMenu.BackColor = Color.FromArgb(0, 122, 204);
         }
     }
 }
