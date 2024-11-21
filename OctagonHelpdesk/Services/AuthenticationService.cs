@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using OctagonHelpdesk.Models;
 using OctagonHelpdesk.Services;
 
@@ -13,7 +14,16 @@ namespace OctagonHelpdesk.Helpers
             UserModel user = usuarioDao.GetUsuario(username);
             if (user != null)
             {
-                return HelperPassword.VerifyPassword(password, user.EncryptedPassword);
+                if (!user.ActiveStateU)
+                {
+                    throw new InvalidOperationException("Usuario desactivado");
+
+                }
+                else
+                {
+                    return HelperPassword.VerifyPassword(password, user.EncryptedPassword);
+                }
+
             }
             return false;
         }

@@ -45,9 +45,9 @@ namespace OctagonHelpdesk.Formularios
         //Inicializar el formulario cuando es para crear un nuevo usuario
         private void InitializeFormWithoutUserData()
         {
-            tbIDUser.Text = usuarioServiceLocal.AutogeneradorID().ToString();
+            usuario.IDUser = usuarioServiceLocal.AutogeneradorID();
+            tbIDUser.Text = usuario.IDUser.ToString();
             usuario.ActiveStateU = true;
-            
 
         }
 
@@ -63,15 +63,17 @@ namespace OctagonHelpdesk.Formularios
                 tbEmail.Text = usuarioSel.Email;
                 cmbDepartamento.SelectedItem = usuarioSel.Departamento;
                 // Asignar otros valores según sea necesario
-                usuario = usuarioSel;   
+                usuario = usuarioSel;
             }
         }
 
         //Boton para guardar los datos del usuario
         private void btnConfirmUserCreation_Click(object sender, EventArgs e)
         {
-            
+
             bool usuarioValid = false;
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
             string name = tbName.Text;
             string lastname = tbLastname.Text;
             string email = tbEmail.Text;
@@ -81,30 +83,31 @@ namespace OctagonHelpdesk.Formularios
 
             //try
             //{
-                if (usuarioValid)
-                {
-                    usuario.IDUser = int.Parse(tbIDUser.Text);
-                    usuario.Name = name;
-                    usuario.Lastname = lastname;
-                    usuario.Email = email;
-                    usuario.Departamento = (Departament)cmbDepartamento.SelectedItem;
+            if (usuarioValid)
+            {
+                usuario.Username = username;
+                usuario.SetPassword(password);
+                usuario.Name = name;
+                usuario.Lastname = lastname;
+                usuario.Email = email;
+                usuario.Departamento = (Departament)cmbDepartamento.SelectedItem;
 
-                    usuario.Roles.ITPerms = cbAdmin.Checked ? true : false;
-                    usuario.Roles.AdminPerms = cbAdmin.Checked ? true : false;
-                    usuario.Roles.BasicPerms = cbAdmin.Checked ? true : false;
-                        
-                    
+                usuario.Roles.ITPerms = cbIT.Checked ? true : false;
+                usuario.Roles.AdminPerms = cbAdmin.Checked ? true : false;
+                usuario.Roles.BasicPerms = cbEmpleado.Checked ? true : false;
 
-                    usuarioValid = true;
-                    UsuarioCreated?.Invoke(usuario);
 
-                    this.Close();
 
-                }
-                else
-                {
-                    MessageBox.Show("Revise el Formato de los Datos Ingresados, No se admiten campis vacíos. Minimo uno de los permisos debe estar activo", "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                usuarioValid = true;
+                UsuarioCreated?.Invoke(usuario);
+
+                this.Close();
+
+            }
+            else
+            {
+                MessageBox.Show("Revise el Formato de los Datos Ingresados, No se admiten campis vacíos. Minimo uno de los permisos debe estar activo", "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             //}
             //catch (Exception ex)
             //{
@@ -114,7 +117,7 @@ namespace OctagonHelpdesk.Formularios
 
         public bool ValidarDatos()
         {
-            if (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrEmpty(tbLastname.Text) || string.IsNullOrEmpty(tbEmail.Text) || cmbDepartamento.SelectedIndex == -1)
+            if (string.IsNullOrEmpty(tbName.Text) || string.IsNullOrEmpty(tbLastname.Text) || string.IsNullOrEmpty(tbEmail.Text) || string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text) || cmbDepartamento.SelectedIndex == -1)
             {
                 return false;
             }
@@ -128,7 +131,7 @@ namespace OctagonHelpdesk.Formularios
             }
             return false;
         }
-    
+
 
         private void CrearUsuarioForm_Load_1(object sender, EventArgs e)
         {

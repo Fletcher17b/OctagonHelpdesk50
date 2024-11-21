@@ -33,7 +33,7 @@ namespace OctagonHelpdesk.Models
 
         public UserModel()
         {
-            //Roles = new Role();
+            Roles = new Role();
 
             ////Mario: Logica basica es asi: en cuanto se crea el objeto y se le asignan las propiedades de un usuario existente
             //// se busca entre donde esten almacenados los roles y se le asigna

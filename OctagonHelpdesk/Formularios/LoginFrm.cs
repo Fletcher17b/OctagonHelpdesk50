@@ -22,22 +22,35 @@ namespace OctagonHelpdesk
 
             if (string.IsNullOrEmpty(inputuser) || string.IsNullOrEmpty(inputpassword))
             {
-                MessageBox.Show("Credenciales vacías", "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Credenciales vacías. Por favor, complete todos los campos.", "¡Cuidado!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                // Verificar las credenciales utilizando AuthenticationService
-                if (AuthenticationService.ValidateCredentials(inputuser, inputpassword))
+                try
                 {
-                    CurrentUser = AuthenticationService.GetCurrentUser(inputuser);
-                    this.DialogResult = DialogResult.OK;
-                    submitted = true;
-                    this.Close();
+                    // Verificar las credenciales utilizando AuthenticationService
+                    if (AuthenticationService.ValidateCredentials(inputuser, inputpassword))
+                    {
+                        CurrentUser = AuthenticationService.GetCurrentUser(inputuser);
+                        this.DialogResult = DialogResult.OK;
+                        submitted = true;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Credenciales inválidas. Por favor, inténtelo de nuevo.", "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 }
-                else
+                catch (InvalidOperationException ex)
                 {
-                    MessageBox.Show("Credenciales inválidas");
+                    MessageBox.Show(ex.Message, "Error de autenticación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error inesperado: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
             }
         }
     }
