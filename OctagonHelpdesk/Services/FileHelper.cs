@@ -2,12 +2,9 @@
 using OctagonHelpdesk.Models.Enum;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 namespace OctagonHelpdesk.Services
 {
     internal class FileHelper
@@ -26,26 +23,22 @@ namespace OctagonHelpdesk.Services
             }
 
             //Si no existe el archivo, lo crea
-            string filePath =rutaArchivo;
-            
+            string filePath = rutaArchivo;
+
             if (!File.Exists(filePath))
             {
-                
                 using (FileStream fs = File.Create(filePath))
                 {
-                  
                 }
-
-               
             }
-
         }
 
         private DateTime dateformater(string date)
         {
             return DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
         }
-        public void SaveUsers(List<UserModel> userLists, bool perms)
+
+        public void SaveUsers(List<UserModel> userLists)
         {
             using (FileStream archivo = new FileStream(rutaArchivo, FileMode.Create, FileAccess.Write))
             {
@@ -58,20 +51,21 @@ namespace OctagonHelpdesk.Services
                         escritor.Write(user.Roles.AdminPerms);
                         escritor.Write(user.Roles.ITPerms);
                         escritor.Write(user.Roles.BasicPerms);
+                        escritor.Write(user.Username);
                         escritor.Write(user.Name);
                         escritor.Write(user.Lastname);
                         escritor.Write(user.Email);
                         escritor.Write((int)user.Departamento);
-                        string fechaComoCadena = user.CreationDate.ToString("dd/MM/yyyy");
-                        escritor.Write(fechaComoCadena);
-                        //escritor.Write(user.GetPassword(perms));
                         escritor.Write(user.CreationDate.ToString("dd/MM/yyyy"));
+                        escritor.Write(user.EncryptedPassword); // Guardar la contraseña encriptada
+
                         // Escribir LastUpdatedDate
                         escritor.Write(user.LastUpdatedDate.HasValue);
                         if (user.LastUpdatedDate.HasValue)
                         {
                             escritor.Write(user.LastUpdatedDate.Value.ToString("dd/MM/yyyy"));
                         }
+
                         // Escribir DeactivationDate
                         escritor.Write(user.DeactivationDate.HasValue);
                         if (user.DeactivationDate.HasValue)
@@ -89,6 +83,7 @@ namespace OctagonHelpdesk.Services
                 }
             }
         }
+
 
         public List<UserModel> GetUsers()
         {
@@ -113,17 +108,16 @@ namespace OctagonHelpdesk.Services
                                     ITPerms = lector.ReadBoolean(),
                                     BasicPerms = lector.ReadBoolean()
                                 },
+                                Username = lector.ReadString(),
                                 Name = lector.ReadString(),
                                 Lastname = lector.ReadString(),
                                 Email = lector.ReadString(),
-                                Departamento = (Departament)lector.ReadInt32()
+                                Departamento = (Departament)lector.ReadInt32(),
+                                CreationDate = ParseDate(lector.ReadString())
                             };
 
-                            string fechaComoCadena = lector.ReadString();
-                            userModel.CreationDate = DateTime.ParseExact(fechaComoCadena, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                            userModel.SetEncryptedPassword(lector.ReadString()); // Leer la contraseña encriptada
 
-                            //userModel.SetPassword(lector.ReadString(), false);
-                            userModel.CreationDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                             // Leer LastUpdatedDate
                             if (lector.ReadBoolean())
                             {
@@ -142,12 +136,11 @@ namespace OctagonHelpdesk.Services
                                 userModel.ReactivationDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                             }
 
-
                             userModels.Add(userModel);
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"An error occurred while reading the file: {ex.Message}");
+                            throw new Exception($"Error al leer el usuario: {ex.Message}");
                         }
                     }
                 }
@@ -155,53 +148,22 @@ namespace OctagonHelpdesk.Services
             return userModels;
         }
 
-
-
-        public UserModel GetUser(int TargetID)
+        private DateTime ParseDate(string dateString)
         {
-            UserModel userModels = new UserModel();
-            if (!File.Exists(rutaArchivo)) return null;
-
-            using (FileStream archivo = new FileStream(rutaArchivo, FileMode.Open, FileAccess.Read))
+            if (DateTime.TryParseExact(dateString, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
             {
-                using (BinaryReader lector = new BinaryReader(archivo))
-                {
-                    while (archivo.Position != archivo.Length)
-                    {
-                        UserModel userModel = new UserModel
-                            {
-                                IDUser = lector.ReadInt32(),
-                                ActiveStateU = lector.ReadBoolean(),
-                                Roles = new Role
-                                {
-                                    AdminPerms = lector.ReadBoolean(),
-                                    ITPerms = lector.ReadBoolean(),
-                                    BasicPerms = lector.ReadBoolean()
-                                },
-                                Name = lector.ReadString(),
-                                Lastname = lector.ReadString(),
-                                Email = lector.ReadString(),
-                                Departamento = (Departament)lector.ReadInt32()
-                            };
-
-                            string fechaComoCadena = lector.ReadString();
-                            userModel.CreationDate = DateTime.ParseExact(fechaComoCadena, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-                            userModel.SetPassword(lector.ReadString(), false);
-                            userModel.CreationDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            userModel.LastUpdatedDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            userModel.DeactivationDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                            userModel.ReactivationDate = DateTime.ParseExact(lector.ReadString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-                        if (userModel.IDUser == TargetID)
-                        {
-                            return userModel;
-                        }
-
-                    }
-                }
+                return date;
             }
-            return null;
+            else
+            {
+                throw new FormatException($"La cadena '{dateString}' no es una fecha válida.");
+            }
+        }
+        public void SaveUser(UserModel user)
+        {
+            List<UserModel> users = GetUsers() ?? new List<UserModel>();
+            users.Add(user);
+            SaveUsers(users);
         }
     }
 }
