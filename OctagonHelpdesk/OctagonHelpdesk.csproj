@@ -127,6 +127,7 @@
     <Compile Include="Services\FileHelper.cs" />
     <Compile Include="Services\HelperPassword.cs" />
     <Compile Include="Dao\TicketDao.cs" />
+    <Compile Include="Services\TicketFileHelper.cs" />
     <Compile Include="Services\UserRolesService.cs" />
     <Compile Include="Dao\UsuarioDao.cs" />
     <EmbeddedResource Include="Formularios\Catalogos\CmpTicketFrm.resx">

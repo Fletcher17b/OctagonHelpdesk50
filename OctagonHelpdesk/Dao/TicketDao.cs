@@ -9,7 +9,24 @@ namespace OctagonHelpdesk.Services
 {
     public class TicketDao
     {
-        private List<Ticket> tickets = new List<Ticket>();
+        public List<Ticket> tickets = new List<Ticket>();
+
+        public TicketDao() 
+        {
+            FillTickets();
+        }
+
+        private void FillTickets()
+        {
+            TicketFileHelper ticketFileHelper = new TicketFileHelper();
+            tickets = ticketFileHelper.GetTickets(); 
+        }
+
+        public void SaveTicketstoDisk(List<Ticket> tickets)
+        {
+            TicketFileHelper ticketFileHelper = new TicketFileHelper();
+            ticketFileHelper.SaveTickets(tickets);
+        }
 
         //Añado el ticket a la lista de tickets
         public void AddTicket(Ticket ticket)

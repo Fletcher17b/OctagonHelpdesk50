@@ -1,6 +1,7 @@
 ﻿using OctagonHelpdesk.Models;
 using OctagonHelpdesk.Services;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -10,17 +11,16 @@ namespace OctagonHelpdesk.Formularios
     public partial class RegTicketFrm : Form
     {
         public TicketDao tickets = new TicketDao();
+        public List<Ticket> ticketsList;
         public UserModel currentUser { get; set; }
 
 
         public RegTicketFrm(UserModel currentUser)
         {
+            ticketsList = tickets.tickets;
             InitializeComponent();
-
             InitializeBinding();
             this.currentUser = currentUser;
-
-
 
         }
         //Inicializa el BindingSource
@@ -77,6 +77,7 @@ namespace OctagonHelpdesk.Formularios
                 tickets.AddTicket(ticket);
             }
             bindingSource.ResetBindings(false);
+            tickets.SaveTicketstoDisk(ticketsList);
         }
 
         //FUNCIONES DE APOYO
