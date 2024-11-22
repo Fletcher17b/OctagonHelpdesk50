@@ -93,9 +93,10 @@
             // 
             // panelcontent
             // 
-            this.panelcontent.Location = new System.Drawing.Point(42, 25);
+            this.panelcontent.Location = new System.Drawing.Point(63, 38);
+            this.panelcontent.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelcontent.Name = "panelcontent";
-            this.panelcontent.Size = new System.Drawing.Size(1227, 658);
+            this.panelcontent.Size = new System.Drawing.Size(1840, 1012);
             this.panelcontent.TabIndex = 1;
             this.panelcontent.Paint += new System.Windows.Forms.PaintEventHandler(this.panelcontent_Paint);
             // 
@@ -113,11 +114,12 @@
             this.containerhome.Controls.Add(this.paneltickets);
             this.containerhome.Controls.Add(this.btnagregarticket);
             this.containerhome.Controls.Add(this.addticketpicbx);
-            this.containerhome.Location = new System.Drawing.Point(0, 53);
-            this.containerhome.MaximumSize = new System.Drawing.Size(143, 150);
-            this.containerhome.MinimumSize = new System.Drawing.Size(143, 39);
+            this.containerhome.Location = new System.Drawing.Point(0, 82);
+            this.containerhome.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.containerhome.MaximumSize = new System.Drawing.Size(214, 231);
+            this.containerhome.MinimumSize = new System.Drawing.Size(214, 60);
             this.containerhome.Name = "containerhome";
-            this.containerhome.Size = new System.Drawing.Size(143, 39);
+            this.containerhome.Size = new System.Drawing.Size(214, 60);
             this.containerhome.TabIndex = 0;
             // 
             // btneditartickets
@@ -126,10 +128,10 @@
             this.btneditartickets.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuText;
             this.btneditartickets.FlatAppearance.BorderSize = 0;
             this.btneditartickets.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btneditartickets.Location = new System.Drawing.Point(51, 112);
+            this.btneditartickets.Location = new System.Drawing.Point(76, 172);
             this.btneditartickets.Margin = new System.Windows.Forms.Padding(0);
             this.btneditartickets.Name = "btneditartickets";
-            this.btneditartickets.Size = new System.Drawing.Size(92, 37);
+            this.btneditartickets.Size = new System.Drawing.Size(138, 57);
             this.btneditartickets.TabIndex = 4;
             this.btneditartickets.Text = "Editar tickets";
             this.btneditartickets.UseVisualStyleBackColor = false;
@@ -141,10 +143,10 @@
             this.btnverticket.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnverticket.FlatAppearance.BorderSize = 0;
             this.btnverticket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnverticket.Location = new System.Drawing.Point(51, 72);
+            this.btnverticket.Location = new System.Drawing.Point(76, 111);
             this.btnverticket.Margin = new System.Windows.Forms.Padding(0);
             this.btnverticket.Name = "btnverticket";
-            this.btnverticket.Size = new System.Drawing.Size(92, 40);
+            this.btnverticket.Size = new System.Drawing.Size(138, 62);
             this.btnverticket.TabIndex = 2;
             this.btnverticket.Text = "   Ver tickets";
             this.btnverticket.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -156,9 +158,10 @@
             this.verpicturebox.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.verpicturebox.BackgroundImage = global::OctagonHelpdesk.Properties.Resources.see;
             this.verpicturebox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.verpicturebox.Location = new System.Drawing.Point(-1, 72);
+            this.verpicturebox.Location = new System.Drawing.Point(-2, 111);
+            this.verpicturebox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.verpicturebox.Name = "verpicturebox";
-            this.verpicturebox.Size = new System.Drawing.Size(54, 40);
+            this.verpicturebox.Size = new System.Drawing.Size(81, 62);
             this.verpicturebox.TabIndex = 10;
             this.verpicturebox.TabStop = false;
             this.verpicturebox.Click += new System.EventHandler(this.verpicturebox_Click);
@@ -168,9 +171,10 @@
             this.editpicturebox.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.editpicturebox.BackgroundImage = global::OctagonHelpdesk.Properties.Resources.plus;
             this.editpicturebox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.editpicturebox.Location = new System.Drawing.Point(0, 110);
+            this.editpicturebox.Location = new System.Drawing.Point(0, 169);
+            this.editpicturebox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.editpicturebox.Name = "editpicturebox";
-            this.editpicturebox.Size = new System.Drawing.Size(54, 42);
+            this.editpicturebox.Size = new System.Drawing.Size(81, 65);
             this.editpicturebox.TabIndex = 9;
             this.editpicturebox.TabStop = false;
             this.editpicturebox.Click += new System.EventHandler(this.editpicturebox_Click);
@@ -180,9 +184,9 @@
             this.paneltickets.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.paneltickets.Controls.Add(this.homebtn);
             this.paneltickets.Location = new System.Drawing.Point(0, 0);
-            this.paneltickets.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.paneltickets.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.paneltickets.Name = "paneltickets";
-            this.paneltickets.Size = new System.Drawing.Size(143, 39);
+            this.paneltickets.Size = new System.Drawing.Size(214, 60);
             this.paneltickets.TabIndex = 1;
             // 
             // homebtn
@@ -191,9 +195,10 @@
             this.homebtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.homebtn.ForeColor = System.Drawing.SystemColors.Control;
             this.homebtn.Image = global::OctagonHelpdesk.Properties.Resources.addticket;
-            this.homebtn.Location = new System.Drawing.Point(-12, -19);
+            this.homebtn.Location = new System.Drawing.Point(-18, -29);
+            this.homebtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.homebtn.Name = "homebtn";
-            this.homebtn.Size = new System.Drawing.Size(166, 75);
+            this.homebtn.Size = new System.Drawing.Size(249, 115);
             this.homebtn.TabIndex = 2;
             this.homebtn.Text = "  Tickets";
             this.homebtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -206,10 +211,10 @@
             this.btnagregarticket.FlatAppearance.BorderColor = System.Drawing.SystemColors.MenuHighlight;
             this.btnagregarticket.FlatAppearance.BorderSize = 0;
             this.btnagregarticket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnagregarticket.Location = new System.Drawing.Point(51, 39);
+            this.btnagregarticket.Location = new System.Drawing.Point(76, 60);
             this.btnagregarticket.Margin = new System.Windows.Forms.Padding(0);
             this.btnagregarticket.Name = "btnagregarticket";
-            this.btnagregarticket.Size = new System.Drawing.Size(92, 37);
+            this.btnagregarticket.Size = new System.Drawing.Size(138, 57);
             this.btnagregarticket.TabIndex = 0;
             this.btnagregarticket.Text = "   Agregar ticket";
             this.btnagregarticket.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -221,9 +226,10 @@
             this.addticketpicbx.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.addticketpicbx.BackgroundImage = global::OctagonHelpdesk.Properties.Resources.plus;
             this.addticketpicbx.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.addticketpicbx.Location = new System.Drawing.Point(0, 39);
+            this.addticketpicbx.Location = new System.Drawing.Point(0, 60);
+            this.addticketpicbx.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.addticketpicbx.Name = "addticketpicbx";
-            this.addticketpicbx.Size = new System.Drawing.Size(54, 37);
+            this.addticketpicbx.Size = new System.Drawing.Size(81, 57);
             this.addticketpicbx.TabIndex = 8;
             this.addticketpicbx.TabStop = false;
             this.addticketpicbx.Click += new System.EventHandler(this.addticketpicbx_Click);
@@ -231,11 +237,11 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(0, 131);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
+            this.panel1.Location = new System.Drawing.Point(0, 202);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.panel1.Size = new System.Drawing.Size(143, 39);
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
+            this.panel1.Size = new System.Drawing.Size(214, 60);
             this.panel1.TabIndex = 7;
             // 
             // button2
@@ -244,9 +250,10 @@
             this.button2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.Control;
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(-12, -17);
+            this.button2.Location = new System.Drawing.Point(-18, -26);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(166, 75);
+            this.button2.Size = new System.Drawing.Size(249, 115);
             this.button2.TabIndex = 2;
             this.button2.Text = "  Temp";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -255,11 +262,11 @@
             // paneluser
             // 
             this.paneluser.Controls.Add(this.btnuser);
-            this.paneluser.Location = new System.Drawing.Point(0, 92);
-            this.paneluser.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.paneluser.Location = new System.Drawing.Point(0, 142);
+            this.paneluser.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.paneluser.Name = "paneluser";
-            this.paneluser.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.paneluser.Size = new System.Drawing.Size(143, 39);
+            this.paneluser.Padding = new System.Windows.Forms.Padding(0, 0, 30, 0);
+            this.paneluser.Size = new System.Drawing.Size(214, 60);
             this.paneluser.TabIndex = 4;
             // 
             // btnuser
@@ -268,9 +275,10 @@
             this.btnuser.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnuser.ForeColor = System.Drawing.SystemColors.Control;
             this.btnuser.Image = global::OctagonHelpdesk.Properties.Resources.user;
-            this.btnuser.Location = new System.Drawing.Point(-13, -21);
+            this.btnuser.Location = new System.Drawing.Point(-20, -32);
+            this.btnuser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnuser.Name = "btnuser";
-            this.btnuser.Size = new System.Drawing.Size(166, 75);
+            this.btnuser.Size = new System.Drawing.Size(249, 115);
             this.btnuser.TabIndex = 2;
             this.btnuser.Text = "   Usuario";
             this.btnuser.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -288,20 +296,21 @@
             this.panelouter.Controls.Add(this.panelmenu);
             this.panelouter.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelouter.Location = new System.Drawing.Point(0, 0);
-            this.panelouter.MaximumSize = new System.Drawing.Size(143, 740);
-            this.panelouter.MinimumSize = new System.Drawing.Size(50, 740);
+            this.panelouter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelouter.MaximumSize = new System.Drawing.Size(214, 1138);
+            this.panelouter.MinimumSize = new System.Drawing.Size(75, 1138);
             this.panelouter.Name = "panelouter";
-            this.panelouter.Size = new System.Drawing.Size(143, 740);
+            this.panelouter.Size = new System.Drawing.Size(214, 1138);
             this.panelouter.TabIndex = 0;
             // 
             // panelhelp
             // 
             this.panelhelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelhelp.Controls.Add(this.btnhelp);
-            this.panelhelp.Location = new System.Drawing.Point(0, 603);
-            this.panelhelp.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.panelhelp.Location = new System.Drawing.Point(0, 928);
+            this.panelhelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 0);
             this.panelhelp.Name = "panelhelp";
-            this.panelhelp.Size = new System.Drawing.Size(143, 39);
+            this.panelhelp.Size = new System.Drawing.Size(214, 60);
             this.panelhelp.TabIndex = 6;
             // 
             // btnhelp
@@ -310,9 +319,10 @@
             this.btnhelp.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnhelp.ForeColor = System.Drawing.SystemColors.Control;
             this.btnhelp.Image = global::OctagonHelpdesk.Properties.Resources.question;
-            this.btnhelp.Location = new System.Drawing.Point(-12, -17);
+            this.btnhelp.Location = new System.Drawing.Point(-18, -26);
+            this.btnhelp.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnhelp.Name = "btnhelp";
-            this.btnhelp.Size = new System.Drawing.Size(166, 75);
+            this.btnhelp.Size = new System.Drawing.Size(249, 115);
             this.btnhelp.TabIndex = 2;
             this.btnhelp.Text = "  Help";
             this.btnhelp.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -322,9 +332,10 @@
             // 
             this.panelsalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.panelsalir.Controls.Add(this.btnsalir);
-            this.panelsalir.Location = new System.Drawing.Point(0, 642);
+            this.panelsalir.Location = new System.Drawing.Point(0, 988);
+            this.panelsalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panelsalir.Name = "panelsalir";
-            this.panelsalir.Size = new System.Drawing.Size(143, 39);
+            this.panelsalir.Size = new System.Drawing.Size(214, 60);
             this.panelsalir.TabIndex = 5;
             // 
             // btnsalir
@@ -333,9 +344,10 @@
             this.btnsalir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsalir.ForeColor = System.Drawing.SystemColors.Control;
             this.btnsalir.Image = global::OctagonHelpdesk.Properties.Resources.logout;
-            this.btnsalir.Location = new System.Drawing.Point(-12, -17);
+            this.btnsalir.Location = new System.Drawing.Point(-18, -26);
+            this.btnsalir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnsalir.Name = "btnsalir";
-            this.btnsalir.Size = new System.Drawing.Size(166, 75);
+            this.btnsalir.Size = new System.Drawing.Size(249, 115);
             this.btnsalir.TabIndex = 2;
             this.btnsalir.Text = "  Salir";
             this.btnsalir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -344,10 +356,10 @@
             // panelmenu
             // 
             this.panelmenu.Controls.Add(this.btnmenu);
-            this.panelmenu.Location = new System.Drawing.Point(0, 1);
-            this.panelmenu.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.panelmenu.Location = new System.Drawing.Point(0, 2);
+            this.panelmenu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.panelmenu.Name = "panelmenu";
-            this.panelmenu.Size = new System.Drawing.Size(143, 49);
+            this.panelmenu.Size = new System.Drawing.Size(214, 75);
             this.panelmenu.TabIndex = 2;
             // 
             // btnmenu
@@ -355,10 +367,10 @@
             this.btnmenu.BackColor = System.Drawing.Color.DarkGray;
             this.btnmenu.ForeColor = System.Drawing.SystemColors.Control;
             this.btnmenu.Image = global::OctagonHelpdesk.Properties.Resources.menu_1_;
-            this.btnmenu.Location = new System.Drawing.Point(-23, -15);
-            this.btnmenu.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.btnmenu.Location = new System.Drawing.Point(-34, -23);
+            this.btnmenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 0);
             this.btnmenu.Name = "btnmenu";
-            this.btnmenu.Size = new System.Drawing.Size(190, 82);
+            this.btnmenu.Size = new System.Drawing.Size(285, 126);
             this.btnmenu.TabIndex = 1;
             this.btnmenu.Text = "     Menu";
             this.btnmenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -373,10 +385,9 @@
             this.fileMenu,
             this.helpMenu});
             this.menuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
-            this.menuStrip.Location = new System.Drawing.Point(143, 0);
+            this.menuStrip.Location = new System.Drawing.Point(214, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip.Size = new System.Drawing.Size(1121, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1682, 37);
             this.menuStrip.Stretch = false;
             this.menuStrip.TabIndex = 3;
             this.menuStrip.Text = "MenuStrip";
@@ -397,7 +408,7 @@
             this.exitToolStripMenuItem});
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
             this.fileMenu.Name = "fileMenu";
-            this.fileMenu.Size = new System.Drawing.Size(73, 24);
+            this.fileMenu.Size = new System.Drawing.Size(60, 19);
             this.fileMenu.Text = "Archivo";
             // 
             // newToolStripMenuItem
@@ -406,7 +417,7 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.newToolStripMenuItem.Text = "&Nuevo";
             // 
             // openToolStripMenuItem
@@ -415,13 +426,13 @@
             this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.openToolStripMenuItem.Text = "&Abrir";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(257, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(203, 6);
             // 
             // saveToolStripMenuItem
             // 
@@ -429,19 +440,19 @@
             this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.saveToolStripMenuItem.Text = "&Guardar";
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.saveAsToolStripMenuItem.Text = "Guardar &como";
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(257, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(203, 6);
             // 
             // printToolStripMenuItem
             // 
@@ -449,7 +460,7 @@
             this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.printToolStripMenuItem.Text = "&Imprimir";
             // 
             // printPreviewToolStripMenuItem
@@ -457,24 +468,24 @@
             this.printPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripMenuItem.Image")));
             this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.printPreviewToolStripMenuItem.Text = "&Vista previa de impresión";
             // 
             // printSetupToolStripMenuItem
             // 
             this.printSetupToolStripMenuItem.Name = "printSetupToolStripMenuItem";
-            this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.printSetupToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.printSetupToolStripMenuItem.Text = "Configurar impresión";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(257, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(203, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(260, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.exitToolStripMenuItem.Text = "&Salir";
             // 
             // helpMenu
@@ -486,14 +497,14 @@
             this.toolStripSeparator8,
             this.aboutToolStripMenuItem});
             this.helpMenu.Name = "helpMenu";
-            this.helpMenu.Size = new System.Drawing.Size(65, 24);
+            this.helpMenu.Size = new System.Drawing.Size(53, 19);
             this.helpMenu.Text = "Ay&uda";
             // 
             // contentsToolStripMenuItem
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
             this.contentsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.contentsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.contentsToolStripMenuItem.Text = "&Contenido";
             // 
             // indexToolStripMenuItem
@@ -501,7 +512,7 @@
             this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
             this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.indexToolStripMenuItem.Text = "&Índice";
             // 
             // searchToolStripMenuItem
@@ -509,31 +520,32 @@
             this.searchToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("searchToolStripMenuItem.Image")));
             this.searchToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            this.searchToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.searchToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.searchToolStripMenuItem.Text = "&Buscar";
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(215, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(173, 6);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.aboutToolStripMenuItem.Text = "&Acerca de... ...";
             // 
             // Frame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1896, 1048);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.panelouter);
             this.Controls.Add(this.panelcontent);
             this.IsMdiContainer = true;
-            this.MaximumSize = new System.Drawing.Size(1918, 1074);
-            this.MinimumSize = new System.Drawing.Size(1278, 668);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(2866, 1622);
+            this.MinimumSize = new System.Drawing.Size(1906, 998);
             this.Name = "Frame";
             this.ShowIcon = false;
             this.Text = "Frame";

@@ -32,6 +32,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -50,7 +51,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +102,16 @@
             this.groupBox1.Size = new System.Drawing.Size(788, 588);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
+            this.label9.Location = new System.Drawing.Point(156, 141);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(107, 18);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "Contraseña:";
             // 
             // label8
             // 
@@ -275,16 +285,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "ID de empleado:";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
-            this.label9.Location = new System.Drawing.Point(156, 141);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(107, 18);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Contraseña:";
-            // 
             // CrearUsuarioForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -294,6 +294,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CrearUsuarioForm";
             this.Text = "Campos Usuario";
             this.Load += new System.EventHandler(this.CrearUsuarioForm_Load_1);

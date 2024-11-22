@@ -48,6 +48,7 @@ namespace OctagonHelpdesk
                 {
                     currentuser = loginForm.CurrentUser;
                     // Aquí puedes agregar lógica adicional para manejar el usuario logueado
+                   
                 }
                 else
                 {
