@@ -55,7 +55,7 @@
             this.label2.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(46, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 12);
+            this.label2.Size = new System.Drawing.Size(107, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Creado por:";
             // 
@@ -65,7 +65,7 @@
             this.label1.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label1.Location = new System.Drawing.Point(51, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 12);
+            this.label1.Size = new System.Drawing.Size(71, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Asunto:";
             // 
@@ -75,7 +75,7 @@
             this.label3.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label3.Location = new System.Drawing.Point(46, 129);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 12);
+            this.label3.Size = new System.Drawing.Size(116, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Descripción:";
             // 
@@ -85,7 +85,7 @@
             this.label4.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label4.Location = new System.Drawing.Point(51, 291);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 12);
+            this.label4.Size = new System.Drawing.Size(71, 18);
             this.label4.TabIndex = 4;
             this.label4.Text = "Estado:";
             // 
@@ -95,7 +95,7 @@
             this.label5.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label5.Location = new System.Drawing.Point(51, 344);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 12);
+            this.label5.Size = new System.Drawing.Size(107, 18);
             this.label5.TabIndex = 5;
             this.label5.Text = "Asignado a:";
             // 
@@ -105,7 +105,7 @@
             this.txtCreatedBy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCreatedBy.Location = new System.Drawing.Point(198, 38);
             this.txtCreatedBy.Name = "txtCreatedBy";
-            this.txtCreatedBy.Size = new System.Drawing.Size(363, 22);
+            this.txtCreatedBy.Size = new System.Drawing.Size(363, 29);
             this.txtCreatedBy.TabIndex = 6;
             // 
             // txtSubject
@@ -113,7 +113,7 @@
             this.txtSubject.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.txtSubject.Location = new System.Drawing.Point(198, 84);
             this.txtSubject.Name = "txtSubject";
-            this.txtSubject.Size = new System.Drawing.Size(363, 22);
+            this.txtSubject.Size = new System.Drawing.Size(363, 29);
             this.txtSubject.TabIndex = 0;
             // 
             // txtDescription
@@ -132,7 +132,7 @@
             this.cmbState.FormattingEnabled = true;
             this.cmbState.Location = new System.Drawing.Point(198, 289);
             this.cmbState.Name = "cmbState";
-            this.cmbState.Size = new System.Drawing.Size(363, 21);
+            this.cmbState.Size = new System.Drawing.Size(363, 29);
             this.cmbState.TabIndex = 3;
             // 
             // cmbAsigned
@@ -142,7 +142,7 @@
             this.cmbAsigned.FormattingEnabled = true;
             this.cmbAsigned.Location = new System.Drawing.Point(198, 341);
             this.cmbAsigned.Name = "cmbAsigned";
-            this.cmbAsigned.Size = new System.Drawing.Size(363, 21);
+            this.cmbAsigned.Size = new System.Drawing.Size(363, 29);
             this.cmbAsigned.TabIndex = 10;
             // 
             // btnSave
@@ -195,7 +195,7 @@
             this.cmbPriority.FormattingEnabled = true;
             this.cmbPriority.Location = new System.Drawing.Point(198, 230);
             this.cmbPriority.Name = "cmbPriority";
-            this.cmbPriority.Size = new System.Drawing.Size(363, 21);
+            this.cmbPriority.Size = new System.Drawing.Size(363, 29);
             this.cmbPriority.TabIndex = 2;
             // 
             // label7
@@ -204,7 +204,7 @@
             this.label7.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 9F);
             this.label7.Location = new System.Drawing.Point(51, 232);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.Size = new System.Drawing.Size(98, 18);
             this.label7.TabIndex = 14;
             this.label7.Text = "Prioridad:";
             // 
@@ -215,7 +215,7 @@
             this.lblTicketID.Font = new System.Drawing.Font("MingLiU_HKSCS-ExtB", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTicketID.Location = new System.Drawing.Point(207, 9);
             this.lblTicketID.Name = "lblTicketID";
-            this.lblTicketID.Size = new System.Drawing.Size(166, 22);
+            this.lblTicketID.Size = new System.Drawing.Size(235, 32);
             this.lblTicketID.TabIndex = 16;
             this.lblTicketID.Text = "Crear Ticket:";
             // 

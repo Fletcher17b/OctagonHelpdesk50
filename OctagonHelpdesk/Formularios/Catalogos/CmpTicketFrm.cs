@@ -65,6 +65,7 @@ namespace OctagonHelpdesk.Formularios
                 txtDescription.Text = ticketSel.Descripcion;
                 cmbState.SelectedItem = ticketSel.StateProcess;
                 cmbPriority.SelectedItem = ticketSel.Prioridad;
+                cmbAsigned.SelectedValue = ticketSel.AsignadoA;
                 //si es admin o it
 
             }
@@ -87,7 +88,8 @@ namespace OctagonHelpdesk.Formularios
                     ticket.Descripcion = description;
                     ticket.StateProcess = cmbState.SelectedItem != null ? (State)cmbState.SelectedItem : State.Creado;
                     ticket.Prioridad = (Priority)cmbPriority.SelectedItem;
-                    //ticket.AsignadoA = cmbAsigned.SelectedItem != null ? cmbAsigned. : "No Asignado";
+                    ticket.AsignadoA = cmbAsigned.SelectedValue != null ? (int)cmbAsigned.SelectedValue : 0;
+
                     if (ticket.StateProcess == State.Cerrado)
                     {
                         ticket.CloseDate = DateTime.Now;
@@ -106,6 +108,8 @@ namespace OctagonHelpdesk.Formularios
                 MessageBox.Show("Error al guardar el ticket", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+   
 
         public bool ValidarDatos()
         {

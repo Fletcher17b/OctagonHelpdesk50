@@ -85,7 +85,7 @@ namespace OctagonHelpdesk.Services
                                 Descripcion = lector.ReadString(),
                                 StateProcess = (State)lector.ReadInt32(),
                                 Prioridad = (Priority)lector.ReadInt32(),
-                                AsignadoA = lector.ReadString(),
+                                AsignadoA = lector.ReadInt32(),
                                 CreationDate = ParseDate(lector.ReadString()),
                                 LastUpdatedDate = ParseDate(lector.ReadString()),
                                 DeactivationDate = ParseDate(lector.ReadString()),
