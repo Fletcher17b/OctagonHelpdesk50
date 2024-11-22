@@ -7,7 +7,7 @@ namespace OctagonHelpdesk
 {
     public partial class LoginFrm : Form
     {
-        public UserModel CurrentUser { get; private set; }
+        public UserModel CurrentUser { get; set; }
         private bool submitted = false;
 
         public LoginFrm()

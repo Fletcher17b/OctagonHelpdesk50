@@ -10,14 +10,17 @@ namespace OctagonHelpdesk.Formularios
     public partial class RegTicketFrm : Form
     {
         public TicketDao tickets = new TicketDao();
-        
-        public RegTicketFrm()
+        public UserModel currentUser { get; set; }
+
+
+        public RegTicketFrm(UserModel currentUser)
         {
             InitializeComponent();
-            //this.currentUser = currentUser;
-            InitializeBinding();
 
-          
+            InitializeBinding();
+            this.currentUser = currentUser;
+
+
 
         }
         //Inicializa el BindingSource
@@ -80,7 +83,7 @@ namespace OctagonHelpdesk.Formularios
         //Crea un ticket y manda a llamar al formulario de creación de tickets
         private void CrearTicket()
         {
-            CmpTicketFrm ticketFrm = new CmpTicketFrm(tickets);
+            CmpTicketFrm ticketFrm = new CmpTicketFrm(tickets, currentUser);
             ticketFrm.TicketCreated += OnTicketCreated;
             ticketFrm.ShowDialog();
         }
@@ -88,7 +91,7 @@ namespace OctagonHelpdesk.Formularios
         //Manda a llamar al formulario de edición de tickets
         public void EditarTicket(Ticket ticketSel)
         {
-            CmpTicketFrm ticketFrm = new CmpTicketFrm(tickets, ticketSel);
+            CmpTicketFrm ticketFrm = new CmpTicketFrm(tickets, ticketSel, currentUser);
             ticketFrm.TicketCreated += OnTicketCreated;
             ticketFrm.ShowDialog();
         }
@@ -111,7 +114,7 @@ namespace OctagonHelpdesk.Formularios
 
         private void DgvRegTickets_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-         bindingNavigatorDeleteItem.Enabled = true;
+            bindingNavigatorDeleteItem.Enabled = true;
         }
     }
 }

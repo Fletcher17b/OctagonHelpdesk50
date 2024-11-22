@@ -18,24 +18,29 @@ namespace OctagonHelpdesk.Formularios
 
         public event Action<Ticket> TicketCreated;
         private readonly TicketDao ticketDaoLocal;
+        UserModel currentUser { get; set; }
         public Ticket ticket = new Ticket();
         public Ticket ticketSel = new Ticket();
 
         // Constructor para crear un nuevo ticket
-        public CmpTicketFrm(TicketDao ticketDao)
+        public CmpTicketFrm(TicketDao ticketDao, UserModel currentUser)
         {
             InitializeComponent();
             ticketDaoLocal = ticketDao;
             InitializeFormWithoutTicketData();
+            this.currentUser = currentUser;
+            txtCreatedBy.Text = currentUser.Name;
         }
 
         // Constructor para editar un ticket existente
-        public CmpTicketFrm(TicketDao ticketService, Ticket ticketSelected)
+        public CmpTicketFrm(TicketDao ticketService, Ticket ticketSelected, UserModel currentUser)
         {
             InitializeComponent();
             ticketDaoLocal = ticketService;
             ticketSel = ticketSelected;
             InitializeFormWithTicketData();
+            this.currentUser = currentUser;
+            txtCreatedBy.Text = currentUser.Name;
         }
 
         // Inicializar el formulario para crear un nuevo ticket
@@ -45,6 +50,7 @@ namespace OctagonHelpdesk.Formularios
             lblTicketID.Text = $"Ticket # {ticket.IDTicket}";
             ticket.CreationDate = DateTime.Now;
             ticket.ActiveState = true;
+            cmbAsigned.Text = "No Asignado";
         }
 
         // Inicializar el formulario para editar un ticket existente
@@ -59,6 +65,8 @@ namespace OctagonHelpdesk.Formularios
                 txtDescription.Text = ticketSel.Descripcion;
                 cmbState.SelectedItem = ticketSel.StateProcess;
                 cmbPriority.SelectedItem = ticketSel.Prioridad;
+                //si es admin o it
+
             }
         }
 
@@ -74,13 +82,12 @@ namespace OctagonHelpdesk.Formularios
             {
                 if (ticketValid)
                 {
-                   
+                    ticket.CreatedBy = currentUser.IDUser;
                     ticket.Subject = subject;
                     ticket.Descripcion = description;
                     ticket.StateProcess = cmbState.SelectedItem != null ? (State)cmbState.SelectedItem : State.Creado;
                     ticket.Prioridad = (Priority)cmbPriority.SelectedItem;
-                    ticket.AsignadoA = "No Asignado";
-
+                    //ticket.AsignadoA = cmbAsigned.SelectedItem != null ? cmbAsigned. : "No Asignado";
                     if (ticket.StateProcess == State.Cerrado)
                     {
                         ticket.CloseDate = DateTime.Now;
@@ -108,6 +115,18 @@ namespace OctagonHelpdesk.Formularios
             }
             return true;
         }
+        private void LoadComboBox()
+        {
+            UsuarioDao usuarios = new UsuarioDao();
+            var filteredUsers = usuarios.GetUsuarios()
+                .Where(u => u.Roles.ITPerms == true || u.Roles.AdminPerms == true)
+                .Select(u => new { u.IDUser, u.Username })
+                .ToList();
+
+            cmbAsigned.DataSource = filteredUsers;
+            cmbAsigned.DisplayMember = "Username";
+            cmbAsigned.ValueMember = "IDUser";
+        }
 
         private void CmpTicketFrm_Load(object sender, EventArgs e)
         {
@@ -119,9 +138,8 @@ namespace OctagonHelpdesk.Formularios
             cmbPriority.SelectedIndex = -1;
             cmbPriority.DataSource = Enum.GetValues(typeof(Priority));
 
-            txtCreatedBy.Enabled = false;
-            btnAttachments.Enabled = false;
-            cmbAsigned.Enabled = false;
+            LoadComboBox();
+
         }
     }
 }

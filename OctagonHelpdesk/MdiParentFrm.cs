@@ -24,13 +24,13 @@ namespace OctagonHelpdesk
         private int sidebarWidthExpanded = 150; // Ancho expandido
         private int sidebarWidthCollapsed = 50;  // Ancho colapsado
         private int animationStep = 5; // Velocidad de la animación
-        UserModel currentuser { get;set; }
+        UserModel currentUser { get; set; }
 
         public MdiParentFrm()
         {
             InitializeComponent();
             animationTimer.Interval = 15; // Velocidad de refresco (15 ms)
-            
+
         }
 
         //Archivo, Salir
@@ -46,9 +46,8 @@ namespace OctagonHelpdesk
             {
                 if (loginForm.ShowDialog(this) == DialogResult.OK)
                 {
-                    currentuser = loginForm.CurrentUser;
+                    currentUser = loginForm.CurrentUser;
                     // Aquí puedes agregar lógica adicional para manejar el usuario logueado
-                   
                 }
                 else
                 {
@@ -74,7 +73,7 @@ namespace OctagonHelpdesk
             else
             {
                 // Si el formulario no está abierto, crea una nueva instancia
-                regTicketFrm = new RegTicketFrm();
+                regTicketFrm = new RegTicketFrm(currentUser);
                 regTicketFrm.MdiParent = this;
                 regTicketFrm.WindowState = FormWindowState.Minimized; // Minimiza el formulario inmediatamente
                 regTicketFrm.Show();
@@ -99,7 +98,7 @@ namespace OctagonHelpdesk
             else
             {
                 // Si el formulario no está abierto, crea una nueva instancia
-                regEmpleadosFrm = new RegEmpleadosFrm();
+                regEmpleadosFrm = new RegEmpleadosFrm(currentUser);
                 regEmpleadosFrm.MdiParent = this;
                 regEmpleadosFrm.WindowState = FormWindowState.Minimized; // Minimiza el formulario inmediatamente
                 regEmpleadosFrm.Show();

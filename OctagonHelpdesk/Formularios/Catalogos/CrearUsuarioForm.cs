@@ -62,6 +62,11 @@ namespace OctagonHelpdesk.Formularios
                 tbLastname.Text = usuarioSel.Lastname;
                 tbEmail.Text = usuarioSel.Email;
                 cmbDepartamento.SelectedItem = usuarioSel.Departamento;
+                txtUsername.Text = usuarioSel.Username;
+                cbAdmin.Checked = usuarioSel.Roles.AdminPerms;
+                cbEmpleado.Checked = usuarioSel.Roles.BasicPerms;
+                cbIT.Checked = usuarioSel.Roles.ITPerms;
+
                 // Asignar otros valores según sea necesario
                 usuario = usuarioSel;
             }

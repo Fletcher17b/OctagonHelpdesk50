@@ -17,16 +17,18 @@ namespace OctagonHelpdesk.Formularios
     public partial class RegEmpleadosFrm : Form
     {
         public UsuarioDao usuarios = new UsuarioDao();
-      
-        public RegEmpleadosFrm()
+        public UserModel currentUser { get; set; }
+
+        public RegEmpleadosFrm(UserModel currentUser)
         {
             InitializeComponent();
             InitializeBinding();
+            this.currentUser = currentUser;
         }
 
         private void InitializeBinding()
         {
-            
+
             DgvRegUsuarios.DataSource = bindingSource1;
             bindingSource1.DataSource = usuarios.GetUsuarios();
             bindingNavigatorDeleteItem.Enabled = false;
@@ -36,7 +38,7 @@ namespace OctagonHelpdesk.Formularios
         private void OnUsuarioCreated(UserModel usuario)
         {
             int indexUsuario = usuarios.FindPosition(usuario.IDUser); // Busca la posición del usuario en la lista
-            
+
             if (indexUsuario != -1) //Si el usuario ya existe, se actualiza
             {
                 usuarios.UpdateUsuario(usuario);
@@ -62,7 +64,7 @@ namespace OctagonHelpdesk.Formularios
             if (result == DialogResult.Yes)
             {
                 usuarios.RemoveUsuario(SelectedRow());
-            MessageBox.Show("El registro fue eliminado.", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El registro fue eliminado.", "Operación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 bindingSource1.ResetBindings(false);
 
             }
@@ -75,7 +77,7 @@ namespace OctagonHelpdesk.Formularios
         //Cuando se da doble clic en un registro, se selecciona y se envía a la ventana de edición
         private void DgvRegUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             if (SelectedRow() != null)
             {
                 EditarUsuario(SelectedRow());

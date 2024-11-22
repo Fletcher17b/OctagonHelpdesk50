@@ -11,7 +11,7 @@ namespace OctagonHelpdesk.Models
     {
         public int IDTicket { get; set; }
         public bool ActiveState { get; set; }
-        public int CreadorPor { get; private set; }
+        public int CreatedBy { get; set; }
         public string Subject { get; set; }
         public string Descripcion { get; set; }
         public State StateProcess { get; set; }
@@ -29,12 +29,13 @@ namespace OctagonHelpdesk.Models
 
         public Ticket()
         {
-            
+
         }
+
         public Ticket(int creadorPorID)
         {
-            CreadorPor = creadorPorID;
-            
+            CreatedBy = creadorPorID;
+
 
         }
 
