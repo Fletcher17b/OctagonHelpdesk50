@@ -18,7 +18,7 @@ Antes de instalar, asegúrate de tener lo siguiente:
 📥 Instalación
 Paso 1: Clonar el repositorio
 Abre una terminal y ejecuta:
-git clone https://github.com/AliciaEA/OctagonHelpdesk.git
+git clone https://github.com/Fletcher17b/OctagonHelpdesk.git
 
 Paso 2: Abrir el proyecto en Visual Studio
 1️⃣ Abre Visual Studio.
